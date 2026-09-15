@@ -1,0 +1,17 @@
+{
+  "nome": "Professoressa Stefi",
+  "ruolo": "Play! Pokémon Professor",
+  "playerId": "123456",
+  "regione": "Lombardia",
+  "avatarUrl": "",
+  "certificazioni": [
+    "Professor Organizer",
+    "TCG Judge (L2)",
+    "VG Judge"
+  ],
+  "socials": [
+    { "platform": "brand-telegram", "url": "#" },
+    { "platform": "brand-instagram", "url": "#" }
+  ],
+  "disattivato": false
+}
