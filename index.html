@@ -145,7 +145,6 @@
     font-weight: 600;
   }
 
-  /* --- VETRINA CERTIFICAZIONI STILE CARD --- */
   .sezione-certificazioni {
     width: 100%;
     margin-top: 8px;
@@ -174,7 +173,6 @@
     padding-right: 2px;
   }
 
-  /* Stile personalizzato per la scrollbar della vetrina */
   .vetrina-grid::-webkit-scrollbar {
     width: 4px;
   }
@@ -324,22 +322,7 @@
 
     <div class="pokegear-screen" id="schermo-lcd">
       <div id="stato-contenitore">
-        <div class="avatar-container" id="profilo-avatar">
-          <i class="ti ti-shield-check"></i>
-        </div>
-        <h1 id="profilo-nome">Caricamento...</h1>
-        <p class="ruolo-prof">-</p>
-        
-        <div class="info-badge">
-          Player ID: <span id="profilo-pid">-</span> | Area: <span id="profilo-regione">-</span>
-        </div>
-
-        <div class="sezione-certificazioni">
-          <p class="sezione-titolo"><i class="ti ti-certificate"></i> Vetrina Credenziali</p>
-          <div class="vetrina-grid" id="profilo-vetrina"></div>
-        </div>
-
-        <div class="social-grid" id="profilo-socials"></div>
+        <!-- Contenuto dinamico iniziale -->
       </div>
     </div>
 
@@ -386,6 +369,27 @@
       }
 
       function caricaInterfaccia(config) {
+        // Ricostruisce sempre la struttura HTML di base prima di inserire i dati
+        const contenitore = document.getElementById("stato-contenitore");
+        contenitore.innerHTML = `
+          <div class="avatar-container" id="profilo-avatar">
+            <i class="ti ti-shield-check"></i>
+          </div>
+          <h1 id="profilo-nome"></h1>
+          <p class="ruolo-prof"></p>
+          
+          <div class="info-badge">
+            Player ID: <span id="profilo-pid"></span> | Area: <span id="profilo-regione"></span>
+          </div>
+
+          <div class="sezione-certificazioni">
+            <p class="sezione-titolo"><i class="ti ti-certificate"></i> Vetrina Credenziali</p>
+            <div class="vetrina-grid" id="profilo-vetrina"></div>
+          </div>
+
+          <div class="social-grid" id="profilo-socials"></div>
+        `;
+
         document.getElementById("profilo-nome").textContent = config.nome;
         document.getElementById("profilo-pid").textContent = config.playerId;
         document.getElementById("profilo-regione").textContent = config.regione;
@@ -399,7 +403,6 @@
           `;
         }
 
-        // Genera la vetrina card delle certificazioni
         const vetrinaGrid = document.getElementById("profilo-vetrina");
         vetrinaGrid.innerHTML = config.certificazioni
           .map(cert => `
