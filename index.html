@@ -257,26 +257,19 @@
         <div class="avatar-container" id="profilo-avatar">
           <i class="ti ti-shield-check"></i>
         </div>
-        <h1 id="profilo-nome">Professoressa Stefi</h1>
-        <p class="ruolo-prof">Play! Pokémon Professor</p>
+        <h1 id="profilo-nome">Caricamento...</h1>
+        <p class="ruolo-prof">-</p>
         
         <div class="info-badge">
-          Player ID: <span id="profilo-pid">123456</span> | Area: <span id="profilo-regione">Lombardia</span>
+          Player ID: <span id="profilo-pid">-</span> | Area: <span id="profilo-regione">-</span>
         </div>
 
         <div class="sezione-certificazioni">
           <p class="sezione-titolo">Certificazioni Attive</p>
-          <div class="badge-lista" id="profilo-badge-lista">
-            <span class="badge-item">Professor Organizer</span>
-            <span class="badge-item">TCG Judge (L2)</span>
-            <span class="badge-item">VG Judge</span>
-          </div>
+          <div class="badge-lista" id="profilo-badge-lista"></div>
         </div>
 
-        <div class="social-grid" id="profilo-socials">
-          <a href="#" class="social-btn" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>
-          <a href="#" class="social-btn" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
-        </div>
+        <div class="social-grid" id="profilo-socials"></div>
       </div>
     </div>
 
@@ -288,20 +281,57 @@
   </div>
 
   <script>
-    // Flag per testare lo stato spento/sospeso
-    const disattivato = false; 
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const response = await fetch('config.json');
+        if (!response.ok) throw new Error("Errore nel caricamento della configurazione");
+        const config = await response.json();
 
-    if (disattivato) {
-      document.getElementById("indicatore-stato").style.backgroundColor = "#ef4444";
-      document.getElementById("indicatore-stato").style.boxShadow = "0 0 8px #ef4444";
-      document.getElementById("stato-contenitore").innerHTML = `
-        <div class="offline-box">
-          <i class="ti ti-eye-off"></i>
-          <h1>Modalità Sospesa</h1>
-          <p>Il Pokégear è temporaneamente offline. Torna a trovarci durante i prossimi eventi ufficiali!</p>
-        </div>
-      `;
-    }
+        if (config.disattivato) {
+          document.getElementById("indicatore-stato").style.backgroundColor = "#ef4444";
+          document.getElementById("indicatore-stato").style.boxShadow = "0 0 8px #ef4444";
+          document.getElementById("stato-contenitore").innerHTML = `
+            <div class="offline-box">
+              <i class="ti ti-eye-off"></i>
+              <h1>Modalità Sospesa</h1>
+              <p>Il Pokégear è temporaneamente offline. Torna a trovarci durante i prossimi eventi ufficiali!</p>
+            </div>
+          `;
+          return;
+        }
+
+        document.getElementById("profilo-nome").textContent = config.nome;
+        document.getElementById("profilo-pid").textContent = config.playerId;
+        document.getElementById("profilo-regione").textContent = config.regione;
+        document.querySelector(".ruolo-prof").textContent = config.ruolo;
+
+        const avatarContainer = document.getElementById("profilo-avatar");
+        if (config.avatarUrl && config.avatarUrl.trim() !== "") {
+          avatarContainer.innerHTML = `<img src="${config.avatarUrl}" alt="Avatar ${config.nome}" />`;
+        }
+
+        const badgeLista = document.getElementById("profilo-badge-lista");
+        badgeLista.innerHTML = config.certificazioni
+          .map(cert => `<span class="badge-item">${cert}</span>`)
+          .join("");
+
+        const socialGrid = document.getElementById("profilo-socials");
+        socialGrid.innerHTML = config.socials
+          .map(s => `<a href="${s.url}" class="social-btn" target="_blank" aria-label="${s.platform}"><i class="ti ti-${s.platform}"></i></a>`)
+          .join("");
+
+      } catch (error) {
+        console.error("Impossibile caricare il profilo:", error);
+        document.getElementById("stato-contenitore").innerHTML = `
+          <div class="offline-box">
+            <i class="ti ti-alert-circle"></i>
+            <h1>Errore di Caricamento</h1>
+            <p>Impossibile leggere il file di configurazione del Pokégear.</p>
+          </div>
+        `;
+      }
+    });
   </script>
+
 </body>
 </html>
