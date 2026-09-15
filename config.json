@@ -1,12 +1,12 @@
 {
   "attiva": true,
-  "nome": "Stefi",
-  "nickname": "",
-  "playerId": "",
+  "nome": "Irene S.",
+  "nickname": "purpleheartx",
+  "playerId": "12345",
   "foto": {
     "tipo": "avatar",
     "url": "./foto.jpg",
-    "inizialiAvatar": "ST"
+    "inizialiAvatar": "IS"
   },
   "certificazioni": [
     { "nome": "Organizer", "attiva": false },
