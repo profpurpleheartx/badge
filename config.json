@@ -1,18 +1,18 @@
 {
   "attiva": true,
   "nome": "Irene S.",
-  "nickname": "purpleheartx",
-  "playerId": "12345",
+  "nickname": "Purpleheartx",
+  "playerId": "5255484",
   "foto": {
     "tipo": "avatar",
     "url": "./foto.jpg",
-    "inizialiAvatar": "IS"
+    "inizialiAvatar": "ST"
   },
   "certificazioni": [
-    { "nome": "Organizer", "attiva": false },
-    { "nome": "TCG Judge", "attiva": false },
-    { "nome": "VG Judge", "attiva": false },
-    { "nome": "Pokémon GO Judge", "attiva": false },
-    { "nome": "Translator", "attiva": false }
+    { "nome": "Organizer", "attiva": true },
+    { "nome": "Deck Check", "attiva": true },
+    { "nome": "League Assistant", "attiva": true },
+    { "nome": "La Condotta dei Professori", "attiva": true },
+    { "nome": "PROF 101", "attiva": true }
   ]
 }
