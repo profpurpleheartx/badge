@@ -30,31 +30,64 @@
 
   body {
     background-color: var(--bg-app);
+    background-image: radial-gradient(circle at 50% 50%, #1a1926 0%, #121216 100%);
     color: var(--text-main);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 16px;
+    position: relative;
+    overflow-x: hidden;
   }
 
+  /* Alone luminoso ambientale sullo sfondo */
+  body::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(138, 127, 209, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Scocca Pokégear con texture metallica e viti agli angoli */
   .pokegear-chassis {
-    background: var(--chassis);
+    background: linear-gradient(145deg, #252430, #1e1d27);
     border: 3px solid var(--chassis-border);
     border-radius: 32px;
     width: 100%;
     max-width: 440px;
-    padding: 24px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    padding: 26px;
+    box-shadow: 0 24px 35px -8px rgba(0, 0, 0, 0.5), 0 10px 15px -5px rgba(0, 0, 0, 0.3);
     position: relative;
+    z-index: 1;
   }
 
+  /* Viti decorative hardware */
+  .screw {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #2f2d3d;
+    border-radius: 50%;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.6), 0 1px 1px rgba(255,255,255,0.06);
+    border: 1px solid #1a1922;
+  }
+  .screw-tl { top: 10px; left: 10px; }
+  .screw-tr { top: 10px; right: 10px; }
+  .screw-bl { bottom: 10px; left: 10px; }
+  .screw-br { bottom: 10px; right: 10px; }
+
+  /* Barra superiore */
   .pokegear-header-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
-    padding: 0 4px;
+    padding: 0 6px;
   }
 
   .pokegear-brand {
@@ -65,14 +98,28 @@
     text-transform: uppercase;
   }
 
+  .pokegear-header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pokegear-clock {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: monospace;
+    letter-spacing: 0.5px;
+  }
+
   .pokegear-status-dot {
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     background-color: var(--success);
     border-radius: 50%;
     box-shadow: 0 0 8px var(--success);
   }
 
+  /* Schermo LCD Interno */
   .pokegear-screen {
     background-color: var(--screen-bg);
     border: 2px solid var(--screen-border);
@@ -82,6 +129,7 @@
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
   }
 
   #stato-contenitore {
@@ -105,6 +153,7 @@
     justify-content: center;
     font-size: 36px;
     color: var(--primary);
+    box-shadow: 0 4px 12px rgba(138, 127, 209, 0.2);
   }
 
   .avatar-container img {
@@ -132,7 +181,7 @@
   .info-badge {
     background: rgba(138, 127, 209, 0.1);
     border: 1px solid rgba(138, 127, 209, 0.25);
-    padding: 5px 10px;
+    padding: 5px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
     color: var(--text-muted);
@@ -145,6 +194,7 @@
     font-weight: 600;
   }
 
+  /* Vetrina Certificazioni */
   .sezione-certificazioni {
     width: 100%;
     margin-top: 8px;
@@ -195,6 +245,7 @@
   .cert-card:hover {
     border-color: var(--primary);
     background: #211f2d;
+    transform: translateY(-1px);
   }
 
   .cert-icon-box {
@@ -229,6 +280,7 @@
     letter-spacing: 0.5px;
   }
 
+  /* Social con colori brand interattivi */
   .social-grid {
     display: flex;
     justify-content: center;
@@ -237,8 +289,8 @@
   }
 
   .social-btn {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: #1b1a24;
     color: var(--primary);
@@ -247,12 +299,31 @@
     justify-content: center;
     text-decoration: none;
     border: 1px solid #323042;
-    transition: all 0.2s;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .social-btn:hover {
-    background: var(--primary);
-    color: #121216;
+    transform: translateY(-2px);
+  }
+
+  /* Colori specifici brand al passaggio del mouse */
+  .social-btn[aria-label*="telegram"]:hover {
+    background: #229ED9;
+    color: #fff;
+    border-color: #229ED9;
+    box-shadow: 0 0 12px rgba(34, 158, 217, 0.5);
+  }
+  .social-btn[aria-label*="instagram"]:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #df5950 45%, #c62985 60%, #8c2dee 90%);
+    color: #fff;
+    border-color: #c62985;
+    box-shadow: 0 0 12px rgba(198, 41, 133, 0.5);
+  }
+  .social-btn[aria-label*="github"]:hover {
+    background: #333333;
+    color: #fff;
+    border-color: #555;
+    box-shadow: 0 0 12px rgba(255,255,255,0.2);
   }
 
   .offline-box {
@@ -271,12 +342,13 @@
     font-size: 0.9rem;
   }
 
+  /* Controlli D-pad con LED Glow e rimbalzo */
   .pokegear-footer-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
-    padding-top: 12px;
+    padding-top: 14px;
     border-top: 1px solid var(--chassis-border);
   }
 
@@ -299,10 +371,14 @@
     border-color: var(--primary);
     color: var(--primary);
     background: #22212b;
+    box-shadow: 0 0 8px rgba(138, 127, 209, 0.3);
   }
 
   .d-pad:active {
-    transform: scale(0.92);
+    transform: scale(0.88);
+    background: var(--primary);
+    color: #121216;
+    box-shadow: 0 0 14px var(--primary);
   }
 
   .brand-tag {
@@ -315,14 +391,24 @@
 <body>
 
   <div class="pokegear-chassis">
+    <!-- Viti hardware angolari -->
+    <div class="screw screw-tl"></div>
+    <div class="screw screw-tr"></div>
+    <div class="screw screw-bl"></div>
+    <div class="screw screw-br"></div>
+
     <div class="pokegear-header-bar">
       <span class="pokegear-brand"><i class="ti ti-device-mobile"></i> POKÉGEAR v3.0</span>
-      <div class="pokegear-status-dot" id="indicatore-stato"></div>
+      <div class="pokegear-header-right">
+        <span id="pokegear-clock" class="pokegear-clock">00:00</span>
+        <i class="ti ti-battery-4" title="Batteria: 100%" style="color: var(--success); font-size: 15px;"></i>
+        <div class="pokegear-status-dot" id="indicatore-stato"></div>
+      </div>
     </div>
 
     <div class="pokegear-screen" id="schermo-lcd">
       <div id="stato-contenitore">
-        <!-- Contenuto dinamico iniziale -->
+        <!-- Contenuto dinamico -->
       </div>
     </div>
 
@@ -334,6 +420,17 @@
   </div>
 
   <script>
+    // Orologio digitale in tempo reale nella barra superiore
+    function aggiornaOrologio() {
+      const ora = new Date();
+      const ore = String(ora.getHours()).padStart(2, '0');
+      const minuti = String(ora.getMinutes()).padStart(2, '0');
+      const clockEl = document.getElementById("pokegear-clock");
+      if (clockEl) clockEl.textContent = `${ore}:${minuti}`;
+    }
+    setInterval(aggiornaOrologio, 1000);
+    aggiornaOrologio();
+
     document.addEventListener("DOMContentLoaded", async () => {
       let configData = null;
 
@@ -369,7 +466,6 @@
       }
 
       function caricaInterfaccia(config) {
-        // Ricostruisce sempre la struttura HTML di base prima di inserire i dati
         const contenitore = document.getElementById("stato-contenitore");
         contenitore.innerHTML = `
           <div class="avatar-container" id="profilo-avatar">
