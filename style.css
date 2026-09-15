@@ -1,0 +1,143 @@
+:root {
+  --lavanda: #8A7FD1;
+  --lavanda-chiaro: #E4E1F5;
+  --lavanda-scuro: #6F63C4;
+  --argento: #E9E8EE;
+  --argento-scuro: #C9C7D3;
+  --bianco: #FFFFFF;
+  --nero-grigino: #2A2A2E;
+  --testo-secondario: #6B6A73;
+  --bg-pagina: #F4F2FA;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: -apple-system, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  background: var(--bg-pagina);
+  color: var(--nero-grigino);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.caricamento {
+  font-size: 28px;
+  color: var(--lavanda);
+  animation: ruota 1s linear infinite;
+}
+@keyframes ruota { to { transform: rotate(360deg); } }
+
+.scheda {
+  width: 100%;
+  max-width: 380px;
+  background: var(--bianco);
+  border-radius: 24px;
+  border: 1px solid var(--argento-scuro);
+  padding: 32px 28px;
+  text-align: center;
+}
+
+.foto {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  object-fit: cover;
+  border: 3px solid var(--lavanda-chiaro);
+  display: block;
+}
+
+.foto-iniziali {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  background: var(--lavanda-chiaro);
+  color: var(--lavanda-scuro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.nome {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 2px;
+}
+
+.nickname {
+  font-size: 14px;
+  color: var(--testo-secondario);
+  margin: 0 0 4px;
+}
+
+.player-id {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--lavanda-scuro);
+  background: var(--lavanda-chiaro);
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.etichetta-ruolo {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--testo-secondario);
+  margin: 0 0 12px;
+}
+
+.certificazioni {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.certificazione {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--argento);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.certificazione i {
+  color: var(--lavanda);
+  font-size: 17px;
+}
+
+.nessuna-certificazione {
+  font-size: 13px;
+  color: var(--testo-secondario);
+  padding: 8px 0;
+}
+
+.footer-pagina {
+  margin-top: 26px;
+  font-size: 11px;
+  color: var(--testo-secondario);
+}
+
+.pagina-non-attiva {
+  text-align: center;
+  color: var(--testo-secondario);
+}
+
+.pagina-non-attiva i {
+  font-size: 32px;
+  color: var(--lavanda);
+  margin-bottom: 12px;
+  display: block;
+}

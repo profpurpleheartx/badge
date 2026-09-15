@@ -1,35 +1,18 @@
 {
-  "nome": "Professoressa Stefi",
-  "ruolo": "Play! Pokémon Professor",
-  "playerId": "123456",
-  "regione": "Lombardia",
-  "avatarUrl": "",
+  "attiva": true,
+  "nome": "Stefi",
+  "nickname": "",
+  "playerId": "",
+  "foto": {
+    "tipo": "avatar",
+    "url": "./foto.jpg",
+    "inizialiAvatar": "ST"
+  },
   "certificazioni": [
-    {
-      "titolo": "Professor Organizer",
-      "categoria": "Organizer",
-      "icon": "ti ti-certificate"
-    },
-    {
-      "titolo": "TCG Judge (L2)",
-      "categoria": "Judge TCG",
-      "icon": "ti ti-cards"
-    },
-    {
-      "titolo": "VG Judge",
-      "categoria": "Judge VG",
-      "icon": "ti ti-device-gamepad-2"
-    }
-  ],
-  "socials": [
-    {
-      "platform": "brand-telegram",
-      "url": "#"
-    },
-    {
-      "platform": "brand-instagram",
-      "url": "#"
-    }
-  ],
-  "disattivato": false
+    { "nome": "Organizer", "attiva": false },
+    { "nome": "TCG Judge", "attiva": false },
+    { "nome": "VG Judge", "attiva": false },
+    { "nome": "Pokémon GO Judge", "attiva": false },
+    { "nome": "Translator", "attiva": false }
+  ]
 }
