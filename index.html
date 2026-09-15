@@ -1,573 +1,835 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pokégear // Professor Profile</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#11131d" />
 
-<meta property="og:title" content="Pokégear // Professoressa Stefi" />
-<meta property="og:description" content="Tesserino digitale ufficiale e certificazioni Play! Pokémon." />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://profpurpleheartx.github.io/badge/preview-card.png" />
-<meta property="og:url" content="https://profpurpleheartx.github.io/badge/" />
+  <title>Pokégear // Professor Profile</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/iconfont/tabler-icons.min.css" />
-<style>
-  :root {
-    --bg-app: #121216;
-    --chassis: #22212b;
-    --chassis-border: #424053;
-    --screen-bg: #16151c;
-    --screen-border: #2e2d3b;
-    --primary: #8A7FD1;
-    --accent-silver: #d1d0e0;
-    --text-main: #f4f2fa;
-    --text-muted: #9e9cb8;
-    --success: #34d399;
-  }
+  <meta property="og:title" content="Pokégear // Professoressa Stefi" />
+  <meta property="og:description" content="Tesserino digitale e certificazioni Play! Pokémon." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://profpurpleheartx.github.io/badge/preview-card.png" />
+  <meta property="og:url" content="https://profpurpleheartx.github.io/badge/" />
 
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/iconfont/tabler-icons.min.css" />
 
-  body {
-    background-color: var(--bg-app);
-    background-image: radial-gradient(circle at 50% 50%, #1a1926 0%, #121216 100%);
-    color: var(--text-main);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-    position: relative;
-    overflow-x: hidden;
-  }
+  <style>
+    :root {
+      --bg: #0b0d14;
+      --panel: #151824;
+      --panel-2: #1b1f2e;
+      --screen: #10131d;
+      --line: #30364b;
+      --line-soft: rgba(255,255,255,.08);
+      --text: #f6f7fb;
+      --muted: #9da5ba;
+      --purple: #9b8cff;
+      --purple-2: #7566e8;
+      --cyan: #54d9ff;
+      --yellow: #ffd75e;
+      --green: #45e0a4;
+      --red: #ff667d;
+      --shadow: 0 28px 70px rgba(0,0,0,.48);
+    }
 
-  /* Alone luminoso ambientale sullo sfondo */
-  body::before {
-    content: "";
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(138, 127, 209, 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: 0;
-    pointer-events: none;
-  }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  /* Scocca Pokégear con texture metallica e viti agli angoli */
-  .pokegear-chassis {
-    background: linear-gradient(145deg, #252430, #1e1d27);
-    border: 3px solid var(--chassis-border);
-    border-radius: 32px;
-    width: 100%;
-    max-width: 440px;
-    padding: 26px;
-    box-shadow: 0 24px 35px -8px rgba(0, 0, 0, 0.5), 0 10px 15px -5px rgba(0, 0, 0, 0.3);
-    position: relative;
-    z-index: 1;
-  }
+    html {
+      min-height: 100%;
+      background: var(--bg);
+    }
 
-  /* Viti decorative hardware */
-  .screw {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: #2f2d3d;
-    border-radius: 50%;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.6), 0 1px 1px rgba(255,255,255,0.06);
-    border: 1px solid #1a1922;
-  }
-  .screw-tl { top: 10px; left: 10px; }
-  .screw-tr { top: 10px; right: 10px; }
-  .screw-bl { bottom: 10px; left: 10px; }
-  .screw-br { bottom: 10px; right: 10px; }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px 16px;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(155,140,255,.12), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(84,217,255,.08), transparent 28%),
+        linear-gradient(145deg, #0b0d14 0%, #10121b 55%, #0a0c12 100%);
+      overflow-x: hidden;
+    }
 
-  /* Barra superiore */
-  .pokegear-header-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-    padding: 0 6px;
-  }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
 
-  .pokegear-brand {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--accent-silver);
-    text-transform: uppercase;
-  }
+    .pokegear {
+      position: relative;
+      width: min(100%, 460px);
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.07), transparent 24%),
+        linear-gradient(145deg, #202332, #151824 65%, #10121a);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.08);
+      overflow: hidden;
+    }
 
-  .pokegear-header-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+    .pokegear::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: 29px;
+      pointer-events: none;
+      border: 1px solid rgba(155,140,255,.07);
+    }
 
-  .pokegear-clock {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    font-family: monospace;
-    letter-spacing: 0.5px;
-  }
+    .screw {
+      position: absolute;
+      z-index: 3;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #303545;
+      border: 1px solid #11131b;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,.8);
+    }
+    .screw::after {
+      content: "";
+      position: absolute;
+      left: 2px;
+      right: 2px;
+      top: 3px;
+      height: 1px;
+      background: #5b6277;
+      transform: rotate(45deg);
+    }
+    .screw-tl { top: 11px; left: 11px; }
+    .screw-tr { top: 11px; right: 11px; }
+    .screw-bl { bottom: 11px; left: 11px; }
+    .screw-br { bottom: 11px; right: 11px; }
 
-  .pokegear-status-dot {
-    width: 9px;
-    height: 9px;
-    background-color: var(--success);
-    border-radius: 50%;
-    box-shadow: 0 0 8px var(--success);
-  }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 2px 5px 16px;
+    }
 
-  /* Schermo LCD Interno */
-  .pokegear-screen {
-    background-color: var(--screen-bg);
-    border: 2px solid var(--screen-border);
-    border-radius: 16px;
-    padding: 18px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
-  }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #dfe3f1;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+    }
 
-  #stato-contenitore {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 380px;
-  }
+    .brand i {
+      color: var(--purple);
+      font-size: 17px;
+    }
 
-  .avatar-container {
-    width: 88px;
-    height: 88px;
-    border-radius: 50%;
-    border: 3px solid var(--primary);
-    overflow: hidden;
-    margin: 0 auto 12px;
-    background: #1c1b24;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 36px;
-    color: var(--primary);
-    box-shadow: 0 4px 12px rgba(138, 127, 209, 0.2);
-  }
+    .header-status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font: 600 .68rem/1 monospace;
+    }
 
-  .avatar-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+    .battery {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
 
-  h1 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 2px;
-    color: var(--text-main);
-  }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px rgba(69,224,164,.8);
+    }
 
-  .ruolo-prof {
-    font-size: 0.8rem;
-    color: var(--primary);
-    font-weight: 600;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+    .screen {
+      position: relative;
+      min-height: 500px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(155,140,255,.08), transparent 38%),
+        linear-gradient(180deg, #11141e, #0d1018);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.035), inset 0 12px 30px rgba(0,0,0,.16);
+      overflow: hidden;
+    }
 
-  .info-badge {
-    background: rgba(138, 127, 209, 0.1);
-    border: 1px solid rgba(138, 127, 209, 0.25);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    display: inline-block;
-    margin-bottom: 14px;
-  }
+    .screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(transparent 50%, rgba(255,255,255,.012) 50%);
+      background-size: 100% 5px;
+      opacity: .35;
+    }
 
-  .info-badge span {
-    color: var(--accent-silver);
-    font-weight: 600;
-  }
+    .profile {
+      position: relative;
+      z-index: 1;
+      min-height: 458px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  /* Vetrina Certificazioni */
-  .sezione-certificazioni {
-    width: 100%;
-    margin-top: 8px;
-    text-align: left;
-  }
+    .profile-top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: .64rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
 
-  .sezione-titolo {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-    border-bottom: 1px solid var(--screen-border);
-    padding-bottom: 4px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+    .online-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--green);
+      font-weight: 700;
+    }
 
-  .vetrina-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-    max-height: 150px;
-    overflow-y: auto;
-    padding-right: 2px;
-  }
+    .avatar {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      margin: 2px auto 13px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 2px solid rgba(155,140,255,.9);
+      background:
+        radial-gradient(circle at 35% 25%, rgba(255,255,255,.12), transparent 30%),
+        #191d2a;
+      color: var(--purple);
+      font-size: 38px;
+      box-shadow:
+        0 0 0 5px rgba(155,140,255,.07),
+        0 12px 35px rgba(0,0,0,.3),
+        0 0 28px rgba(155,140,255,.12);
+      overflow: hidden;
+    }
 
-  .vetrina-grid::-webkit-scrollbar {
-    width: 4px;
-  }
-  .vetrina-grid::-webkit-scrollbar-thumb {
-    background: var(--screen-border);
-    border-radius: 4px;
-  }
+    .avatar::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: inherit;
+    }
 
-  .cert-card {
-    background: #1b1a24;
-    border: 1px solid #323042;
-    border-radius: 10px;
-    padding: 8px 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.2s ease;
-  }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-  .cert-card:hover {
-    border-color: var(--primary);
-    background: #211f2d;
-    transform: translateY(-1px);
-  }
+    h1 {
+      font-size: clamp(1.35rem, 5vw, 1.6rem);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -.4px;
+      text-align: center;
+    }
 
-  .cert-icon-box {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(138, 127, 209, 0.15);
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
+    .role {
+      margin-top: 5px;
+      color: var(--purple);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
 
-  .cert-info {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-  }
+    .identity {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 7px;
+      margin: 13px 0 20px;
+    }
 
-  .cert-name {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-main);
-  }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,.025);
+      font-size: .67rem;
+    }
 
-  .cert-type {
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
+    .pill strong {
+      color: #e9ebf5;
+      font-weight: 750;
+    }
 
-  /* Social con colori brand interattivi */
-  .social-grid {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 14px;
-  }
+    .section {
+      width: 100%;
+      margin-top: auto;
+    }
 
-  .social-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #1b1a24;
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    border: 1px solid #323042;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--line-soft);
+      color: var(--muted);
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
 
-  .social-btn:hover {
-    transform: translateY(-2px);
-  }
+    .section-title i {
+      color: var(--yellow);
+      font-size: 15px;
+    }
 
-  /* Colori specifici brand al passaggio del mouse */
-  .social-btn[aria-label*="telegram"]:hover {
-    background: #229ED9;
-    color: #fff;
-    border-color: #229ED9;
-    box-shadow: 0 0 12px rgba(34, 158, 217, 0.5);
-  }
-  .social-btn[aria-label*="instagram"]:hover {
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #df5950 45%, #c62985 60%, #8c2dee 90%);
-    color: #fff;
-    border-color: #c62985;
-    box-shadow: 0 0 12px rgba(198, 41, 133, 0.5);
-  }
-  .social-btn[aria-label*="github"]:hover {
-    background: #333333;
-    color: #fff;
-    border-color: #555;
-    box-shadow: 0 0 12px rgba(255,255,255,0.2);
-  }
+    .cert-grid {
+      display: grid;
+      gap: 8px;
+      margin-top: 9px;
+      max-height: 174px;
+      overflow-y: auto;
+      padding-right: 3px;
+      scrollbar-width: thin;
+      scrollbar-color: #3a4055 transparent;
+    }
 
-  .offline-box {
-    text-align: center;
-    padding: 40px 20px;
-  }
+    .cert-grid::-webkit-scrollbar { width: 4px; }
+    .cert-grid::-webkit-scrollbar-thumb {
+      background: #3a4055;
+      border-radius: 999px;
+    }
 
-  .offline-box i {
-    font-size: 48px;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-  }
+    .cert {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid var(--line-soft);
+      border-radius: 13px;
+      background: linear-gradient(100deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+      transition: .2s ease;
+    }
 
-  .offline-box p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-  }
+    .cert:hover {
+      transform: translateY(-1px);
+      border-color: rgba(155,140,255,.45);
+      background: rgba(155,140,255,.07);
+    }
 
-  /* Controlli D-pad con LED Glow e rimbalzo */
-  .pokegear-footer-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-    padding-top: 14px;
-    border-top: 1px solid var(--chassis-border);
-  }
+    .cert-icon {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: var(--purple);
+      background: rgba(155,140,255,.11);
+      border: 1px solid rgba(155,140,255,.15);
+      font-size: 17px;
+    }
 
-  .d-pad {
-    width: 38px;
-    height: 38px;
-    background: #191821;
-    border-radius: 50%;
-    border: 2px solid #383647;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
+    .cert-info {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
-  .d-pad:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-    background: #22212b;
-    box-shadow: 0 0 8px rgba(138, 127, 209, 0.3);
-  }
+    .cert-name {
+      overflow: hidden;
+      color: #f0f1f7;
+      font-size: .76rem;
+      font-weight: 750;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
-  .d-pad:active {
-    transform: scale(0.88);
-    background: var(--primary);
-    color: #121216;
-    box-shadow: 0 0 14px var(--primary);
-  }
+    .cert-type {
+      color: var(--muted);
+      font-size: .62rem;
+      letter-spacing: .55px;
+      text-transform: uppercase;
+    }
 
-  .brand-tag {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-  }
-</style>
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .social {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: #b9bfd1;
+      background: rgba(255,255,255,.025);
+      text-decoration: none;
+      transition: .2s ease;
+    }
+
+    .social:hover {
+      color: #fff;
+      border-color: rgba(155,140,255,.55);
+      background: rgba(155,140,255,.12);
+      transform: translateY(-2px);
+    }
+
+    .offline {
+      min-height: 458px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .offline-icon {
+      font-size: 48px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .offline p {
+      max-width: 300px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.55;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding: 13px 5px 2px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .control {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #3a4054;
+      border-radius: 50%;
+      color: #aab1c4;
+      background: #11131c;
+      cursor: pointer;
+      transition: .16s ease;
+    }
+
+    .control:hover {
+      color: var(--purple);
+      border-color: rgba(155,140,255,.65);
+      box-shadow: 0 0 16px rgba(155,140,255,.16);
+    }
+
+    .control:active {
+      transform: scale(.9);
+    }
+
+    .footer-label {
+      color: #737b90;
+      font-size: .6rem;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+    }
+
+    .diagnostic {
+      position: relative;
+      z-index: 1;
+      min-height: 458px;
+      padding: 15px 5px;
+    }
+
+    .diagnostic-title {
+      color: var(--purple);
+      font-size: .8rem;
+      font-weight: 850;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    .diagnostic-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line-soft);
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    .diagnostic-row strong {
+      color: #e8eaf2;
+      font-weight: 700;
+    }
+
+    .diagnostic-hint {
+      margin-top: 22px;
+      color: var(--green);
+      text-align: center;
+      font-size: .72rem;
+      line-height: 1.45;
+    }
+
+    .secret {
+      min-height: 458px;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .secret i {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--yellow);
+      font-size: 42px;
+    }
+
+    .secret p {
+      color: #dfe2ed;
+      font-size: .9rem;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 420px) {
+      body { padding: 12px; }
+      .pokegear { padding: 14px; border-radius: 25px; }
+      .screen { padding: 15px; min-height: 480px; }
+      .profile { min-height: 438px; }
+      .offline, .diagnostic, .secret { min-height: 438px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <main class="pokegear" aria-label="Pokégear della Professoressa Stefi">
+    <span class="screw screw-tl" aria-hidden="true"></span>
+    <span class="screw screw-tr" aria-hidden="true"></span>
+    <span class="screw screw-bl" aria-hidden="true"></span>
+    <span class="screw screw-br" aria-hidden="true"></span>
 
-  <div class="pokegear-chassis">
-    <!-- Viti hardware angolari -->
-    <div class="screw screw-tl"></div>
-    <div class="screw screw-tr"></div>
-    <div class="screw screw-bl"></div>
-    <div class="screw screw-br"></div>
-
-    <div class="pokegear-header-bar">
-      <span class="pokegear-brand"><i class="ti ti-device-mobile"></i> POKÉGEAR v3.0</span>
-      <div class="pokegear-header-right">
-        <span id="pokegear-clock" class="pokegear-clock">00:00</span>
-        <i class="ti ti-battery-4" title="Batteria: 100%" style="color: var(--success); font-size: 15px;"></i>
-        <div class="pokegear-status-dot" id="indicatore-stato"></div>
+    <header class="header">
+      <div class="brand">
+        <i class="ti ti-device-mobile"></i>
+        <span>POKÉGEAR // v3.0</span>
       </div>
-    </div>
 
-    <div class="pokegear-screen" id="schermo-lcd">
-      <div id="stato-contenitore">
-        <!-- Contenuto dinamico -->
+      <div class="header-status">
+        <span id="pokegear-clock">00:00</span>
+        <span class="battery" title="Batteria: 100%">
+          <i class="ti ti-battery-4"></i>
+        </span>
+        <span class="status-dot" id="indicatore-stato" aria-label="Stato online"></span>
       </div>
-    </div>
+    </header>
 
-    <div class="pokegear-footer-controls">
-      <div class="d-pad" id="btn-power" title="Diagnostica Sistema"><i class="ti ti-power"></i></div>
-      <span class="brand-tag">LEAGUE CONSOLE</span>
-      <div class="d-pad" id="btn-pokeball" title="Messaggio Segreto"><i class="ti ti-pokeball"></i></div>
-    </div>
-  </div>
+    <section class="screen" id="schermo-lcd" aria-live="polite">
+      <div id="stato-contenitore"></div>
+    </section>
+
+    <footer class="footer">
+      <button class="control" id="btn-power" type="button" title="Diagnostica Sistema" aria-label="Apri diagnostica">
+        <i class="ti ti-power"></i>
+      </button>
+
+      <span class="footer-label">LEAGUE CONSOLE</span>
+
+      <button class="control" id="btn-pokeball" type="button" title="Messaggio Segreto" aria-label="Mostra messaggio segreto">
+        <i class="ti ti-ball-pokeball"></i>
+      </button>
+    </footer>
+  </main>
 
   <script>
-    // Orologio digitale in tempo reale nella barra superiore
+    let configData = null;
+    let inModalitaDiagnostica = false;
+    let secretTimer = null;
+
     function aggiornaOrologio() {
       const ora = new Date();
-      const ore = String(ora.getHours()).padStart(2, '0');
-      const minuti = String(ora.getMinutes()).padStart(2, '0');
       const clockEl = document.getElementById("pokegear-clock");
-      if (clockEl) clockEl.textContent = `${ore}:${minuti}`;
+      if (clockEl) {
+        clockEl.textContent = ora.toLocaleTimeString("it-IT", {
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+      }
     }
-    setInterval(aggiornaOrologio, 1000);
-    aggiornaOrologio();
+
+    function escapeHtml(value) {
+      const div = document.createElement("div");
+      div.textContent = String(value ?? "");
+      return div.innerHTML;
+    }
+
+    function iconaValida(icon) {
+      return typeof icon === "string" && /^ti(?:-[a-z0-9]+)*$/.test(icon)
+        ? icon
+        : "ti ti-award";
+    }
+
+    function caricaInterfaccia(config) {
+      const contenitore = document.getElementById("stato-contenitore");
+
+      contenitore.innerHTML = `
+        <div class="profile">
+          <div class="profile-top">
+            <span>Professor Profile</span>
+            <span class="online-label">
+              <span class="status-dot"></span> Online
+            </span>
+          </div>
+
+          <div class="avatar" id="profilo-avatar" aria-label="Avatar profilo">
+            <i class="ti ti-shield-check"></i>
+          </div>
+
+          <h1 id="profilo-nome"></h1>
+          <p class="role" id="profilo-ruolo"></p>
+
+          <div class="identity">
+            <span class="pill"><i class="ti ti-id"></i> ID <strong id="profilo-pid"></strong></span>
+            <span class="pill"><i class="ti ti-map-pin"></i> <strong id="profilo-regione"></strong></span>
+          </div>
+
+          <div class="section">
+            <p class="section-title">
+              <i class="ti ti-certificate"></i>
+              Vetrina credenziali
+            </p>
+            <div class="cert-grid" id="profilo-vetrina"></div>
+          </div>
+
+          <div class="socials" id="profilo-socials" aria-label="Social"></div>
+        </div>
+      `;
+
+      document.getElementById("profilo-nome").textContent = config.nome || "Professoressa Stefi";
+      document.getElementById("profilo-pid").textContent = config.playerId || "—";
+      document.getElementById("profilo-regione").textContent = config.regione || "—";
+      document.getElementById("profilo-ruolo").textContent = config.ruolo || "";
+
+      const avatarContainer = document.getElementById("profilo-avatar");
+      if (config.avatarUrl && config.avatarUrl.trim()) {
+        const img = document.createElement("img");
+        img.src = config.avatarUrl;
+        img.alt = `Avatar ${config.nome || "profilo"}`;
+        img.addEventListener("error", () => {
+          avatarContainer.innerHTML = '<i class="ti ti-shield-check"></i>';
+        }, { once: true });
+        avatarContainer.replaceChildren(img);
+      }
+
+      const certificazioni = Array.isArray(config.certificazioni) ? config.certificazioni : [];
+      const vetrinaGrid = document.getElementById("profilo-vetrina");
+
+      if (!certificazioni.length) {
+        vetrinaGrid.innerHTML = '<div class="cert"><div class="cert-info"><span class="cert-name">Nessuna certificazione</span></div></div>';
+      } else {
+        certificazioni.forEach(cert => {
+          const card = document.createElement("div");
+          card.className = "cert";
+
+          const iconBox = document.createElement("div");
+          iconBox.className = "cert-icon";
+          iconBox.innerHTML = `<i class="${iconaValida(cert.icon)}"></i>`;
+
+          const info = document.createElement("div");
+          info.className = "cert-info";
+
+          const name = document.createElement("span");
+          name.className = "cert-name";
+          name.textContent = cert.titolo || "Certificazione";
+
+          const type = document.createElement("span");
+          type.className = "cert-type";
+          type.textContent = cert.categoria || "";
+
+          info.append(name, type);
+          card.append(iconBox, info);
+          vetrinaGrid.appendChild(card);
+        });
+      }
+
+      const socialGrid = document.getElementById("profilo-socials");
+      const socials = Array.isArray(config.socials) ? config.socials : [];
+
+      socials.forEach(social => {
+        if (!social || !social.url || social.url === "#") return;
+
+        const a = document.createElement("a");
+        a.className = "social";
+        a.href = social.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.setAttribute("aria-label", social.platform || "Social");
+
+        const icon = document.createElement("i");
+        icon.className = `ti ti-${social.platform || "link"}`;
+
+        a.appendChild(icon);
+        socialGrid.appendChild(a);
+      });
+    }
+
+    function mostraOffline() {
+      document.getElementById("indicatore-stato").style.background = "var(--red)";
+      document.getElementById("indicatore-stato").style.boxShadow = "0 0 12px rgba(255,102,125,.8)";
+
+      document.getElementById("stato-contenitore").innerHTML = `
+        <div class="offline">
+          <div>
+            <i class="ti ti-eye-off offline-icon"></i>
+            <h1>Modalità Sospesa</h1>
+            <p>Il Pokégear è temporaneamente offline. Torna a trovarci durante i prossimi eventi ufficiali!</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function mostraDiagnostica() {
+      document.getElementById("schermo-lcd").style.borderColor = "rgba(155,140,255,.65)";
+      document.getElementById("stato-contenitore").innerHTML = `
+        <div class="diagnostic">
+          <p class="diagnostic-title"><i class="ti ti-cpu"></i> DIAGNOSTICA POKÉGEAR</p>
+          <div class="diagnostic-row"><span>Firmware</span><strong>v3.0-Stable</strong></div>
+          <div class="diagnostic-row"><span>Vetrina</span><strong>Attiva e sincronizzata</strong></div>
+          <div class="diagnostic-row"><span>Stato Sync</span><strong>Online / Attivo</strong></div>
+          <p class="diagnostic-hint">Tocca di nuovo Power per tornare alla Home.</p>
+        </div>
+      `;
+    }
+
+    function mostraSegreto() {
+      clearTimeout(secretTimer);
+
+      document.getElementById("schermo-lcd").style.borderColor = "rgba(255,215,94,.45)";
+
+      const frasi = [
+        "«Un buon Professore ascolta sempre i suoi giocatori.»",
+        "«Controlla sempre il mazzo prima dell'inizio del round!»",
+        "«Le regole sono importanti, ma il fair play viene prima di tutto.»",
+        "«Pronta per un nuovo torneo Play! Pokémon?»"
+      ];
+
+      const fraseCasuale = frasi[Math.floor(Math.random() * frasi.length)];
+
+      document.getElementById("stato-contenitore").innerHTML = `
+        <div class="secret">
+          <div>
+            <i class="ti ti-ball-pokeball"></i>
+            <p>${escapeHtml(fraseCasuale)}</p>
+          </div>
+        </div>
+      `;
+
+      secretTimer = setTimeout(() => {
+        if (configData && !inModalitaDiagnostica) {
+          document.getElementById("schermo-lcd").style.borderColor = "var(--line)";
+          caricaInterfaccia(configData);
+        }
+      }, 3500);
+    }
 
     document.addEventListener("DOMContentLoaded", async () => {
-      let configData = null;
+      aggiornaOrologio();
+      setInterval(aggiornaOrologio, 1000);
 
       try {
-        const response = await fetch('config.json');
+        const response = await fetch("config.json", { cache: "no-store" });
         if (!response.ok) throw new Error("Errore nel caricamento della configurazione");
+
         configData = await response.json();
 
         if (configData.disattivato) {
-          document.getElementById("indicatore-stato").style.backgroundColor = "#ef4444";
-          document.getElementById("indicatore-stato").style.boxShadow = "0 0 8px #ef4444";
-          document.getElementById("stato-contenitore").innerHTML = `
-            <div class="offline-box">
-              <i class="ti ti-eye-off"></i>
-              <h1>Modalità Sospesa</h1>
-              <p>Il Pokégear è temporaneamente offline. Torna a trovarci durante i prossimi eventi ufficiali!</p>
-            </div>
-          `;
+          mostraOffline();
           return;
         }
 
         caricaInterfaccia(configData);
-
       } catch (error) {
         console.error("Impossibile caricare il profilo:", error);
+        document.getElementById("indicatore-stato").style.background = "var(--red)";
         document.getElementById("stato-contenitore").innerHTML = `
-          <div class="offline-box">
-            <i class="ti ti-alert-circle"></i>
-            <h1>Errore di Caricamento</h1>
-            <p>Impossibile leggere il file di configurazione del Pokégear.</p>
-          </div>
-        `;
-      }
-
-      function caricaInterfaccia(config) {
-        const contenitore = document.getElementById("stato-contenitore");
-        contenitore.innerHTML = `
-          <div class="avatar-container" id="profilo-avatar">
-            <i class="ti ti-shield-check"></i>
-          </div>
-          <h1 id="profilo-nome"></h1>
-          <p class="ruolo-prof"></p>
-          
-          <div class="info-badge">
-            Player ID: <span id="profilo-pid"></span> | Area: <span id="profilo-regione"></span>
-          </div>
-
-          <div class="sezione-certificazioni">
-            <p class="sezione-titolo"><i class="ti ti-certificate"></i> Vetrina Credenziali</p>
-            <div class="vetrina-grid" id="profilo-vetrina"></div>
-          </div>
-
-          <div class="social-grid" id="profilo-socials"></div>
-        `;
-
-        document.getElementById("profilo-nome").textContent = config.nome;
-        document.getElementById("profilo-pid").textContent = config.playerId;
-        document.getElementById("profilo-regione").textContent = config.regione;
-        document.querySelector(".ruolo-prof").textContent = config.ruolo;
-
-        const avatarContainer = document.getElementById("profilo-avatar");
-        if (config.avatarUrl && config.avatarUrl.trim() !== "") {
-          avatarContainer.innerHTML = `
-            <img src="${config.avatarUrl}" alt="Avatar ${config.nome}" 
-                 onerror="this.onerror=null; this.parentNode.innerHTML='<i class=\\'ti ti-shield-check\\'></i>';" />
-          `;
-        }
-
-        const vetrinaGrid = document.getElementById("profilo-vetrina");
-        vetrinaGrid.innerHTML = config.certificazioni
-          .map(cert => `
-            <div class="cert-card">
-              <div class="cert-icon-box">
-                <i class="${cert.icon || 'ti ti-award'}"></i>
-              </div>
-              <div class="cert-info">
-                <span class="cert-name">${cert.titolo}</span>
-                <span class="cert-type">${cert.categoria}</span>
-              </div>
+          <div class="offline">
+            <div>
+              <i class="ti ti-alert-circle offline-icon"></i>
+              <h1>Errore di caricamento</h1>
+              <p>Impossibile leggere il file di configurazione del Pokégear.</p>
             </div>
-          `).join("");
-
-        const socialGrid = document.getElementById("profilo-socials");
-        socialGrid.innerHTML = config.socials
-          .map(s => `<a href="${s.url}" class="social-btn" target="_blank" aria-label="${s.platform}"><i class="ti ti-${s.platform}"></i></a>`)
-          .join("");
+          </div>
+        `;
       }
 
-      // --- EASTER EGG D-PAD ---
-      const btnPower = document.getElementById("btn-power");
-      const btnPokeball = document.getElementById("btn-pokeball");
-      const schermoLcd = document.getElementById("schermo-lcd");
-      let inModalitaDiagnostica = false;
-
-      btnPower.addEventListener("click", () => {
+      document.getElementById("btn-power").addEventListener("click", () => {
         if (!configData || configData.disattivato) return;
+
         inModalitaDiagnostica = !inModalitaDiagnostica;
-        
+
         if (inModalitaDiagnostica) {
-          schermoLcd.style.borderColor = "var(--primary)";
-          document.getElementById("stato-contenitore").innerHTML = `
-            <div style="text-align: left; width: 100%; padding: 10px; font-size: 0.82rem;">
-              <p style="color: var(--primary); font-weight: bold; margin-bottom: 8px;"><i class="ti ti-cpu"></i> DIAGNOSTICA POKÉGEAR</p>
-              <p style="color: var(--text-muted); margin-bottom: 4px;">• Firmware: v3.0-Stable</p>
-              <p style="color: var(--text-muted); margin-bottom: 4px;">• Vetrina: Attiva e Sincronizzata</p>
-              <p style="color: var(--text-muted); margin-bottom: 4px;">• Stato Sync: Online / Attivo</p>
-              <p style="color: var(--success); margin-top: 12px; text-align: center;">Tocca di nuovo Power per tornare alla Home.</p>
-            </div>
-          `;
+          mostraDiagnostica();
         } else {
-          schermoLcd.style.borderColor = "var(--screen-border)";
+          document.getElementById("schermo-lcd").style.borderColor = "var(--line)";
           caricaInterfaccia(configData);
         }
       });
 
-      btnPokeball.addEventListener("click", () => {
-        const frasi = [
-          "«Un buon Professore ascolta sempre i suoi giocatori.»",
-          "«Controlla sempre il mazzo prima dell'inizio del round!»",
-          "«Le regole sono importanti, ma il fair play viene prima di tutto.»",
-          "«Pronta per un nuovo torneo Play! Pokémon?»"
-        ];
-        const fraseCasuale = frasi[Math.floor(Math.random() * frasi.length)];
-        
-        const contenitore = document.getElementById("stato-contenitore");
-        contenitore.innerHTML = `
-          <div style="padding: 20px; text-align: center;">
-            <i class="ti ti-pokeball" style="font-size: 36px; color: var(--primary); margin-bottom: 12px; display: inline-block;"></i>
-            <p style="font-size: 0.95rem; font-style: italic; color: var(--accent-silver); line-height: 1.4;">${fraseCasuale}</p>
-          </div>
-        `;
-
-        setTimeout(() => {
-          if (!inModalitaDiagnostica && configData) {
-            caricaInterfaccia(configData);
-          }
-        }, 3500);
+      document.getElementById("btn-pokeball").addEventListener("click", () => {
+        if (!configData || configData.disattivato) return;
+        inModalitaDiagnostica = false;
+        mostraSegreto();
       });
     });
   </script>

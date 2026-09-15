@@ -22,8 +22,14 @@
     }
   ],
   "socials": [
-    { "platform": "brand-telegram", "url": "#" },
-    { "platform": "brand-instagram", "url": "#" }
+    {
+      "platform": "brand-telegram",
+      "url": "#"
+    },
+    {
+      "platform": "brand-instagram",
+      "url": "#"
+    }
   ],
   "disattivato": false
 }
