@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pokégear // Professor Profile</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/iconfont/tabler-icons.min.css" />
+<style>
+  :root {
+    --bg-app: #0f172a;
+    --chassis: #1e293b;
+    --chassis-border: #334155;
+    --screen-bg: #090d16;
+    --screen-border: #1e293b;
+    --primary: #38bdf8;
+    --accent: #a855f7;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --success: #22c55e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+  body {
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+  }
+
+  /* Scocca Pokégear */
+  .pokegear-chassis {
+    background: var(--chassis);
+    border: 3px solid var(--chassis-border);
+    border-radius: 32px;
+    width: 100%;
+    max-width: 420px;
+    padding: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+
+  /* Antenna / Dettaglio superiore */
+  .pokegear-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 0 4px;
+  }
+
+  .pokegear-brand {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .pokegear-status-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--success);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--success);
+  }
+
+  /* Schermo LCD Interno */
+  .pokegear-screen {
+    background-color: var(--screen-bg);
+    border: 2px solid var(--screen-border);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* Sezione Stato (Online/Offline) */
+  #stato-contenitore {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px;
+  }
+
+  .avatar-container {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    overflow: hidden;
+    margin: 0 auto 16px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: var(--primary);
+  }
+
+  .avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .ruolo-prof {
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .info-badge {
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .info-badge span {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  /* Griglia Certificazioni */
+  .sezione-certificazioni {
+    width: 100%;
+    margin-top: 16px;
+    text-align: left;
+  }
+
+  .sezione-titolo {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 4px;
+  }
+
+  .badge-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .badge-item {
+    background: #1e293b;
+    color: var(--text-main);
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+  }
+
+  /* Social e Contatti */
+  .social-grid {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .social-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1e293b;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #334155;
+    transition: all 0.2s;
+  }
+
+  .social-btn:hover {
+    background: var(--primary);
+    color: #000;
+  }
+
+  /* Schermata Spento / Disattivato */
+  .offline-box {
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .offline-box i {
+    font-size: 48px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .offline-box p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* Dettagli footer chasses */
+  .pokegear-footer-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 12px;
+    border-top: 1px solid var(--chassis-border);
+  }
+
+  .d-pad {
+    width: 36px;
+    height: 36px;
+    background: #0f172a;
+    border-radius: 50%;
+    border: 2px solid #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .brand-tag {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="pokegear-chassis">
+    <div class="pokegear-header-bar">
+      <span class="pokegear-brand"><i class="ti ti-device-mobile"></i> POKÉGEAR v3.0</span>
+      <div class="pokegear-status-dot" id="indicatore-stato"></div>
+    </div>
+
+    <div class="pokegear-screen">
+      <div id="stato-contenitore">
+        <!-- I contenuti vengono caricati dinamicamente o configurati qui -->
+        <div class="avatar-container" id="profilo-avatar">
+          <i class="ti ti-shield-check"></i>
+        </div>
+        <h1 id="profilo-nome">Professoressa Stefi</h1>
+        <p class="ruolo-prof">Play! Pokémon Professor</p>
+        
+        <div class="info-badge">
+          Player ID: <span id="profilo-pid">123456</span> | Area: <span id="profilo-regione">Lombardia</span>
+        </div>
+
+        <div class="sezione-certificazioni">
+          <p class="sezione-titolo">Certificazioni Attive</p>
+          <div class="badge-lista" id="profilo-badge-lista">
+            <span class="badge-item">Professor Organizer</span>
+            <span class="badge-item">TCG Judge (L2)</span>
+            <span class="badge-item">VG Judge</span>
+          </div>
+        </div>
+
+        <div class="social-grid" id="profilo-socials">
+          <a href="#" class="social-btn" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pokegear-footer-controls">
+      <div class="d-pad"><i class="ti ti-power"></i></div>
+      <span class="brand-tag">OFFICIAL LEAGUE CONSOLE</span>
+      <div class="d-pad"><i class="ti ti-pokeball"></i></div>
+    </div>
+  </div>
+
+  <script>
+    // Script leggero per leggere eventuali parametri o JSON di configurazione
+    // (In futuro puoi collegarlo a un file config.json nel repo GitHub per aggiornarlo al volo)
+    const disattivato = false; // Metti true se vuoi testare lo stato spento
+
+    if (disattivato) {
+      document.getElementById("indicatore-stato").style.backgroundColor = "#ef4444";
+      document.getElementById("indicatore-stato").style.boxShadow = "0 0 8px #ef4444";
+      document.getElementById("stato-contenitore").innerHTML = `
+        <div class="offline-box">
+          <i class="ti ti-eye-off"></i>
+          <h1>Modalità Sospesa</h1>
+          <p>Il Pokégear è temporaneamente offline. Torna a trovarci durante i prossimi eventi ufficiali!</p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
