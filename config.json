@@ -5,9 +5,21 @@
   "regione": "Lombardia",
   "avatarUrl": "",
   "certificazioni": [
-    "Professor Organizer",
-    "TCG Judge (L2)",
-    "VG Judge"
+    {
+      "titolo": "Professor Organizer",
+      "categoria": "Organizer",
+      "icon": "ti ti-certificate"
+    },
+    {
+      "titolo": "TCG Judge (L2)",
+      "categoria": "Judge TCG",
+      "icon": "ti ti-cards"
+    },
+    {
+      "titolo": "VG Judge",
+      "categoria": "Judge VG",
+      "icon": "ti ti-device-gamepad-2"
+    }
   ],
   "socials": [
     { "platform": "brand-telegram", "url": "#" },
