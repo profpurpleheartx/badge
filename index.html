@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Professor Hub — Irene Solimeno</title>
+<meta name="description" content="Professor Hub di Irene Solimeno — Professor Play! Pokémon: certificazioni, ruolo e contatti.">
+<meta property="og:title" content="Professor Hub — Irene Solimeno">
+<meta property="og:description" content="Professor Play! Pokémon: certificazioni, ruolo e contatti.">
+<meta property="og:type" content="profile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Professor Hub — Irene Solimeno">
+<meta name="twitter:description" content="Professor Play! Pokémon: certificazioni, ruolo e contatti.">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components/hero.css">
+<link rel="stylesheet" href="css/components/info-cards.css">
+<link rel="stylesheet" href="css/components/certifications.css">
+<link rel="stylesheet" href="css/components/modal.css">
+<link rel="stylesheet" href="css/components/toast.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body>
+<div class="page"><main class="shell">
+<header class="header"><div class="brand"><div class="brand-mark">◉</div>Professor <span>Hub</span> ✦</div><div class="device-note"><i></i><span>Stile adattato al dispositivo</span></div></header>
+<section class="hero"><div class="decor d1">✦</div><div class="decor d2">✧</div><div class="decor d3">✦</div><div class="avatar-wrap"><div class="avatar" id="avatar">IS</div><div class="prof-badge">◉ PROFESSOR PLAY!</div></div><div class="identity"><h1 id="profileName">Irene Solimeno</h1><div class="nick" id="profileNickname">@Purpleheartx</div><div class="role" id="profileRole">●  Professor Play! Pokémon</div><button class="player" id="copy" type="button"><div><small>PLAYER ID</small><strong id="profilePlayerId">5255484</strong></div><span class="copy">⧉</span></button></div><div class="bio">♡ &nbsp; <span id="profileBioText">Appassionata di Pokémon TCG, mi impegno ogni giorno per creare ambienti di gioco inclusivi, divertenti e sempre all'insegna del rispetto.</span><span class="heart">♥ ─────────</span></div></section>
+<section class="info" id="info"></section>
+<section class="content" id="certificazioni"><div class="sectionhead"><h2><span>♛</span> &nbsp;Le mie certificazioni</h2><a href="#certificazioni">Vedi tutte →</a></div><div class="certs" id="certs"></div><div class="instagram"><div class="instagram-left"><div class="ig-icon">◎</div><div><strong>Seguimi su Instagram →</strong><span>Scopri il mio percorso e le attività Pokémon TCG</span></div></div><a class="igbtn" id="instagramLink" href="https://instagram.com/" target="_blank" rel="noopener">Apri profilo →</a></div></section>
+<footer class="footer"><span>© Professor Hub</span><span>Profilo Professore · Pokémon TCG</span></footer></main></div>
+<div class="modal" id="modal"><div class="modalbox"><button class="close" id="close" type="button" aria-label="Chiudi">×</button><div class="modalgrid"><div class="modalimg" id="modalMedia"><div class="modal-paper"><div><strong id="modalPaper">Organizer</strong><br><span>PLAY! POKÉMON<br>PROFESSOR CERTIFICATION</span></div></div></div><div><div class="modalname" id="modalName"></div><div class="modaldate" id="modalDate"></div><div class="modaldetails" id="modalDetails"></div><div class="gallery"><button id="prev" type="button" aria-label="Certificazione precedente">‹</button><span id="counter"></span><button id="next" type="button" aria-label="Certificazione successiva">›</button></div></div></div></div></div>
+<div class="toast" id="toast">Player ID copiato! ✦</div><div id="appError" hidden>Impossibile caricare il profilo. Controlla data/config.json.</div>
+<script type="module" src="js/app.js"></script>
+</body></html>
