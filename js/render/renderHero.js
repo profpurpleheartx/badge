@@ -4,6 +4,8 @@ export function renderHero(config){
   $("#profileNickname").textContent=config.nickname||"";
   $("#profileRole").textContent=`●  ${config.ruolo||""}`;
   $("#profilePlayerId").textContent=config.playerId||"";
+  const badge=$("#profBadge");
+  if(config.rango){ badge.textContent=`◉ ${config.rango.nome||""}`; if(config.rango.colore) badge.style.background=config.rango.colore; }
   $("#profileBioText").textContent=config.bio||"";
   const avatar=$("#avatar");
   avatar.textContent="";
