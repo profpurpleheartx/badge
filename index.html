@@ -1,21 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <meta name="theme-color" content="#F4F2FA" />
-  <meta name="description" content="Pagina pubblica del Professore Play!Pokémon" />
-  <title>Professor Hub — Pagina Professore</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/iconfont/tabler-icons.min.css" />
-  <link rel="stylesheet" href="./style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Professor Hub</title>
+<link rel="icon" href="data:,">
+<style>
+*{box-sizing:border-box}
+:root{
+ --bg:#080d2b;--bg2:#11183e;--panel:#10183d;--panel2:#151f4b;--line:#29356e;
+ --text:#f6f4ff;--muted:#a8aed0;--accent:#a45cf2;--accent2:#42b9ff;
+ --green:#25d39b;--shadow:0 25px 70px rgba(0,0,0,.38)
+}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--text);background:
+ radial-gradient(900px 500px at 48% 0%,#34247c55,transparent 65%),
+ radial-gradient(500px 500px at 0% 60%,#2a62ad22,transparent 70%),var(--bg)}
+button,a{font:inherit}
+button{cursor:pointer}
+.page{width:min(1180px,100%);margin:auto;padding:16px 18px 35px}
+.shell{border:1px solid #27336a;border-radius:18px;background:linear-gradient(180deg,#0d1435ee,#080d2bea);box-shadow:var(--shadow);overflow:hidden}
+.header{height:54px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #27336a;background:#0b1231e8}
+.brand{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:900}.pokeball{width:24px;height:24px;border-radius:50%;background:linear-gradient(#fff 48%,#e84165 48%);border:2px solid #5ca9ff;position:relative}.pokeball:after{content:"";position:absolute;width:7px;height:7px;border:2px solid #11183e;background:#fff;border-radius:50%;left:6px;top:6px}
+.hcontrols{display:flex;gap:6px}.theme{width:29px;height:29px;border:0;border-radius:50%;background:#20285a;color:#f8db42}.theme:last-child{color:#a9b7ff}
+.hero{padding:28px 28px 16px;display:grid;grid-template-columns:155px 1fr 280px;gap:28px;align-items:center;background:
+ radial-gradient(360px 180px at 70% 20%,#5c2fa633,transparent 70%)}
+.avatar{width:145px;height:145px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#4a2b82,#1b9be2);border:4px solid #ad5bff;box-shadow:0 0 0 4px #1a2d69,0 0 32px #9e4dff55;color:#fff;font-size:34px;font-weight:950}
+.identity h1{margin:0;font-size:31px;letter-spacing:-.8px}.nick{margin-top:2px;color:#c46cff;font-size:17px;font-weight:850}.role{display:inline-flex;align-items:center;gap:8px;margin-top:13px;background:#222c65;border:1px solid #38498f;border-radius:99px;padding:8px 13px;font-size:12px;font-weight:800}
+.player{display:inline-flex;align-items:center;gap:13px;margin-top:13px;background:#151f4c;border:1px solid #2f3c78;border-radius:99px;padding:7px 12px 7px 15px}.player small{color:#a9b0d4}.player strong{font-size:17px}.copy{width:30px;height:30px;border:0;border-radius:9px;background:#222d66;color:#cdd5ff}
+.bio{color:#d4d7eb;font-size:12px;line-height:1.65}
+.info{margin:0 28px 15px;border:1px solid #29366e;background:#111a42;border-radius:13px;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}.infoitem{padding:13px 16px;display:flex;gap:10px;align-items:center;border-right:1px solid #29366e}.infoitem:last-child{border-right:0}.infoicon{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:#30236f;color:#b46cff;font-weight:900}.infoitem b{font-size:10px;color:#aab0d4;display:block}.infoitem span{font-size:11px;color:#eeeefe}
+.content{padding:8px 28px 20px}.sectionhead{display:flex;align-items:center;justify-content:space-between;margin:10px 0 15px}.sectionhead h2{font-size:19px;margin:0}.sectionhead a{font-size:11px;color:#9da9ff}
+.certs{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}.cert{min-width:0;padding:10px;border:1px solid #2b3975;border-radius:12px;background:linear-gradient(180deg,#151f4d,#10183b);box-shadow:0 9px 25px #0002;transition:.18s}.cert:hover{transform:translateY(-3px);border-color:#6951bc}.certtop{display:flex;align-items:center;gap:8px}.certicon{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#a94ef0,#5c5ce7);color:#fff;font-weight:900}.certname{font-size:11px;font-weight:850;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.status{display:inline-flex;margin-top:3px;font-size:8px;padding:3px 6px;border-radius:99px;background:#173f38;color:#52e0b5;font-weight:850}.certdate{font-size:9px;color:#b6bcdb;margin:9px 0}.certimg{height:105px;border-radius:7px;border:1px solid #3c4b87;background:linear-gradient(135deg,#1f2c5d,#0e1431);display:grid;place-items:center;color:#8994c5;font-size:9px;font-weight:800;text-align:center;padding:8px}.instagram{text-align:center;padding:14px 0 12px}.insta{width:46px;height:46px;border:0;border-radius:50%;display:inline-grid;place-items:center;color:#fff;background:radial-gradient(circle at 30% 110%,#ffd600 0 12%,#ff7a00 24%,#ff0169 48%,#d300c5 68%,#7638fa 100%);box-shadow:0 8px 22px #c12ac744;font-size:23px;font-weight:900;text-decoration:none}.instagram div{font-size:10px;margin-top:7px;font-weight:750}.footer{margin:0 28px;padding:12px 0;border-top:1px solid #26336a;display:flex;justify-content:space-between;color:#8189ad;font-size:9px}
+
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:18px;background:#050718c9;backdrop-filter:blur(9px);z-index:20}.modal.open{display:flex}.modalbox{width:min(780px,100%);border:1px solid #364686;border-radius:18px;background:linear-gradient(145deg,#111941,#0b1230);box-shadow:0 35px 100px #0009;padding:18px;position:relative}.close{position:absolute;right:14px;top:14px;width:34px;height:34px;border:1px solid #46558f;border-radius:50%;background:#121a3f;color:#fff;font-size:18px;z-index:2}.modalgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:20px;align-items:center}.modalimg{height:360px;border:1px solid #3c4c89;border-radius:10px;background:linear-gradient(135deg,#202d61,#0d1432);display:grid;place-items:center;color:#9da8d3;font-weight:850;font-size:13px;text-align:center;padding:15px}.modalname{font-size:25px;font-weight:900}.modalstatus{display:inline-block;margin-left:8px;vertical-align:middle;font-size:9px;padding:5px 8px;border-radius:99px;background:#17483d;color:#55e0b6}.modaldate{font-size:11px;color:#aeb6dc;margin-top:7px}.modaldetails{font-size:13px;line-height:1.7;color:#d2d7ed;margin-top:18px}.gallery{display:flex;align-items:center;justify-content:space-between;margin-top:28px}.gallery button{width:38px;height:38px;border:1px solid #3b4b87;border-radius:10px;background:#131c45;color:#fff}.gallery span{font-size:10px;color:#a9b1d6;font-weight:800}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#fff;color:#16142a;padding:9px 13px;border-radius:10px;font-size:11px;font-weight:800;transition:.2s;z-index:30}.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:850px){.hero{grid-template-columns:105px 1fr;gap:18px}.avatar{width:100px;height:100px}.bio{grid-column:1/-1}.info{grid-template-columns:repeat(2,1fr)}.infoitem:nth-child(2){border-right:0}.infoitem{border-bottom:1px solid #29366e}.infoitem:nth-child(3),.infoitem:nth-child(4){border-bottom:0}.certs{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.page{padding:0}.shell{border-radius:0;border-left:0;border-right:0}.header{padding:0 16px}.hero{padding:24px 17px 15px;grid-template-columns:80px 1fr;gap:13px}.avatar{width:78px;height:78px;font-size:21px}.identity h1{font-size:21px}.nick{font-size:13px}.role{font-size:9px;padding:7px 9px}.player{font-size:10px}.player strong{font-size:13px}.bio{font-size:11px}.info{margin:0 17px 12px;grid-template-columns:1fr 1fr}.infoitem{padding:10px 9px}.infoicon{width:28px;height:28px;font-size:12px}.content{padding:5px 17px 15px}.certs{grid-template-columns:1fr 1fr;gap:8px}.cert{padding:8px}.certimg{height:85px}.certname{font-size:9px}.modalgrid{grid-template-columns:1fr}.modalimg{height:260px}.modalname{font-size:20px}.footer{margin:0 17px}.instagram{padding-bottom:10px}}
+@media(prefers-color-scheme:light){:root{--bg:#f1eff8;--bg2:#fff;--panel:#fff;--panel2:#f8f7fc;--line:#ddd8ed;--text:#25223b;--muted:#747084;--accent:#765fc9;--accent2:#4f9ce5;--green:#14835e}body{background:radial-gradient(600px 350px at 50% 0%,#ded7f833,transparent 70%),#f3f1f8}.shell{background:#fff;border-color:#ddd8ed;box-shadow:0 25px 70px #665b8c1a}.header{background:#fff;border-color:#e4dfef}.theme{background:#f0edfa}.hero{background:radial-gradient(360px 180px at 70% 20%,#7d62d018,transparent 70%)}.player,.info,.cert{background:#fff;border-color:#ded9eb}.info{background:#f8f6fc}.infoitem{border-color:#ded9eb}.bio{color:#5e5a70}.certimg{background:#f4f2fa;color:#8a849f}.modalbox{background:#fff;border-color:#ddd8ed}.modalimg{background:#f4f2fa;color:#77728a}.modaldate{color:#6956bd}.modaldetails{color:#5f5a70}.gallery button{background:#f1eff9;color:#5549a4}.footer{border-color:#ded9eb}}
+</style>
 </head>
 <body>
-  <main id="pagina" aria-live="polite">
-    <div class="caricamento" role="status" aria-label="Caricamento">
-      <i class="ti ti-loader-2"></i>
-    </div>
-  </main>
-  <script src="./script.js"></script>
-</body>
-</html>
+<div class="page"><div class="shell">
+<header class="header">
+<div class="brand"><span class="pokeball"></span>Professor <span style="color:#8d7af0">Hub</span></div>
+<div class="hcontrols"><button class="theme">☼</button><button class="theme">☾</button></div>
+</header>
+<section class="hero">
+<div class="avatar" id="avatar">IS</div>
+<div class="identity"><h1 id="name"></h1><div class="nick" id="nick"></div><div class="role">◉ <span id="role"></span></div><br><button class="player" id="copy"><small>Player ID</small><strong id="playerId"></strong><span>⧉</span></button></div>
+<div class="bio" id="bio"></div>
+</section>
+<section class="info" id="info"></section>
+<section class="content">
+<div class="sectionhead"><h2>♛ &nbsp;Le mie certificazioni</h2><a href="#certificazioni">Vedi tutte →</a></div>
+<div class="certs" id="certificazioni"></div>
+<div class="instagram" id="instagram"></div>
+</section>
+<footer class="footer"><span>◉ Professor <b style="color:#8174e0">Hub</b></span><span>Profilo Professore · Pokémon TCG</span></footer>
+</div></div>
+
+<div class="modal" id="modal" aria-hidden="true" role="dialog">
+<div class="modalbox">
+<button class="close" id="close" aria-label="Chiudi">×</button>
+<div class="modalgrid">
+<div class="modalimg" id="modalImg">CERTIFICAZIONE</div>
+<div><div class="modalname" id="modalName"></div><span class="modalstatus">● Attiva</span><div class="modaldate" id="modalDate"></div><div class="modaldetails" id="modalDetails"></div>
+<div class="gallery"><button id="prev">‹</button><span id="counter"></span><button id="next">›</button></div></div>
+</div></div></div>
+<div class="toast" id="toast">Player ID copiato!</div>
+<script>
+const state={data:null,index:0,imageIndex:0};
+const $=id=>document.getElementById(id);
+async function load(){
+ try{
+  const r=await fetch(new URL("config.json",document.baseURI),{cache:"no-store"});
+  if(!r.ok)throw new Error("HTTP "+r.status);
+  state.data=await r.json(); render();
+ }catch(e){
+  document.querySelector(".shell").innerHTML='<div style="padding:50px;text-align:center"><h2>Impossibile caricare la configurazione</h2><p>Controlla che config.json sia nella stessa cartella di index.html.</p></div>';
+  console.error(e);
+ }
+}
+function render(){
+ const p=state.data.profilo;
+ $("name").textContent=p.nome;$("nick").textContent=p.nickname;$("role").textContent=p.ruolo;$("playerId").textContent=p.playerId;$("bio").textContent=p.bio;
+ if(p.avatar)$("avatar").style.backgroundImage=`url("${p.avatar}")`,$("avatar").textContent="";
+ $("info").innerHTML=(state.data.info||[]).map(x=>`<div class="infoitem"><span class="infoicon">${x.icona}</span><div><b>${x.titolo}</b><span>${x.testo}</span></div></div>`).join("");
+ const certs=(state.data.certificazioni||[]).filter(c=>c.attiva);
+ $("certificazioni").innerHTML=certs.map((c,i)=>`<article class="cert" tabindex="0" data-i="${i}"><div class="certtop"><span class="certicon">★</span><div><div class="certname">${c.nome}</div><span class="status">● Attiva</span></div></div><div class="certdate">Ottenuta: ${c.data}</div><div class="certimg">IMMAGINE<br>${c.nome}</div></article>`).join("");
+ document.querySelectorAll(".cert").forEach(el=>{el.onclick=()=>openModal(+el.dataset.i);el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openModal(+el.dataset.i)}}});
+ const ig=state.data.instagram;
+ $("instagram").innerHTML=ig?.attivo?`<a class="insta" href="${ig.url}" target="_blank" rel="noopener" aria-label="${ig.nome}">◎</a><div>${ig.nome}</div>`:"";
+}
+function openModal(i){state.index=i;state.imageIndex=0;updateModal();$("modal").classList.add("open");$("modal").setAttribute("aria-hidden","false");document.body.style.overflow="hidden";$("close").focus()}
+function updateModal(){const c=state.data.certificazioni.filter(x=>x.attiva)[state.index];const imgs=c.immagini||[];$("modalName").textContent=c.nome;$("modalDate").textContent="Ottenuta: "+c.data;$("modalDetails").textContent=c.dettagli||c.descrizione||"";$("counter").textContent=`${state.imageIndex+1} / ${imgs.length||1}`;if(imgs.length){$("modalImg").innerHTML=`<img src="${imgs[state.imageIndex]}" alt="${c.nome}" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:6px" onerror="this.outerHTML='<span>IMMAGINE NON DISPONIBILE<br>Carica il file indicato in config.json</span>'">`}else $("modalImg").textContent="IMMAGINE NON DISPONIBILE"}
+function closeModal(){$("modal").classList.remove("open");$("modal").setAttribute("aria-hidden","true");document.body.style.overflow=""}
+$("close").onclick=closeModal;$("modal").onclick=e=>{if(e.target===$("modal"))closeModal()};$("prev").onclick=()=>{const c=state.data.certificazioni.filter(x=>x.attiva)[state.index],n=c.immagini?.length||1;state.imageIndex=(state.imageIndex+n-1)%n;updateModal()};$("next").onclick=()=>{const c=state.data.certificazioni.filter(x=>x.attiva)[state.index],n=c.immagini?.length||1;state.imageIndex=(state.imageIndex+1)%n;updateModal()};document.onkeydown=e=>{if(e.key==="Escape")closeModal();if($("modal").classList.contains("open")&&e.key==="ArrowLeft")$("prev").click();if($("modal").classList.contains("open")&&e.key==="ArrowRight")$("next").click()};
+$("copy").onclick=async()=>{try{await navigator.clipboard.writeText(state.data.profilo.playerId)}catch{}$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),1500)};
+load();
+</script>
+</body></html>

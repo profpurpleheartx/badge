@@ -1,49 +1,89 @@
 {
-  "attiva": true,
-  "nome": "Irene S.",
-  "nickname": "Purpleheartx",
-  "playerId": "5255484",
-  "foto": {
-    "tipo": "avatar",
-    "url": "./foto.jpg",
-    "inizialiAvatar": "IS"
+  "profilo": {
+    "nome": "Irene Solimeno",
+    "nickname": "@Purpleheartx",
+    "ruolo": "Professor Play! Pokémon",
+    "playerId": "5255484",
+    "bio": "Appassionata di Pokémon TCG, mi impegno ogni giorno per creare ambienti di gioco inclusivi, divertenti e sempre all'insegna del rispetto.",
+    "avatar": "avatar.jpg"
   },
-  "ruolo": "Professor Play!Pokémon",
+  "info": [
+    {
+      "icona": "▣",
+      "titolo": "Dal 2022",
+      "testo": "nel mondo Pokémon"
+    },
+    {
+      "icona": "⌖",
+      "titolo": "Napoli",
+      "testo": "Lega Campania"
+    },
+    {
+      "icona": "★",
+      "titolo": "Specializzazioni",
+      "testo": "Tornei · Deck Check · Organizzazione"
+    },
+    {
+      "icona": "文",
+      "titolo": "Lingue",
+      "testo": "Italiano · English"
+    }
+  ],
   "certificazioni": [
     {
       "nome": "Organizer",
-      "descrizione": "Gestione eventi e tornei",
-      "icona": "ti-calendar-event",
-      "immagine": "./certificazioni/organizer.jpg",
-      "attiva": true
+      "descrizione": "Organizzazione di eventi e tornei Pokémon TCG.",
+      "dettagli": "Certificazione che attesta la capacità di organizzare e gestire eventi ufficiali Pokémon TCG, garantendo un’esperienza di gioco sicura, equa e di qualità per tutti i partecipanti.",
+      "data": "12/03/2024",
+      "attiva": true,
+      "immagini": [
+        "certificazioni/organizer.jpg"
+      ]
     },
     {
       "nome": "Deck Check",
-      "descrizione": "Controllo mazzi e regolamenti",
-      "icona": "ti-cards",
-      "immagine": "./certificazioni/deck-check.jpg",
-      "attiva": true
+      "descrizione": "Controllo mazzi e regolamenti.",
+      "dettagli": "Certificazione dedicata al controllo dei mazzi e all'applicazione dei regolamenti durante gli eventi.",
+      "data": "18/07/2024",
+      "attiva": true,
+      "immagini": [
+        "certificazioni/deck-check.jpg"
+      ]
     },
     {
       "nome": "League Assistant",
-      "descrizione": "Supporto alla Lega Pokémon",
-      "icona": "ti-pokeball",
-      "immagine": "./certificazioni/league-assistant.jpg",
-      "attiva": true
+      "descrizione": "Supporto alla Lega Pokémon.",
+      "dettagli": "Certificazione relativa al supporto delle attività e degli eventi della Lega Pokémon.",
+      "data": "22/11/2023",
+      "attiva": true,
+      "immagini": [
+        "certificazioni/league-assistant.jpg"
+      ]
     },
     {
-      "nome": "La Condotta dei Professori",
-      "descrizione": "Educazione e valori Pokémon",
-      "icona": "ti-book",
-      "immagine": "./certificazioni/condotta-professori.jpg",
-      "attiva": true
+      "nome": "Condotta Professori",
+      "descrizione": "Educazione e valori Pokémon.",
+      "dettagli": "Certificazione relativa alla condotta e ai valori richiesti ai Professori.",
+      "data": "03/02/2025",
+      "attiva": true,
+      "immagini": [
+        "certificazioni/condotta-professori.jpg"
+      ]
     },
     {
-      "nome": "PROF 101",
-      "descrizione": "Formazione e aggiornamento",
-      "icona": "ti-star",
-      "immagine": "./certificazioni/prof-101.jpg",
-      "attiva": true
+      "nome": "Prof. 101",
+      "descrizione": "Formazione e aggiornamento.",
+      "dettagli": "Percorso di formazione e aggiornamento per Professori.",
+      "data": "15/09/2023",
+      "attiva": true,
+      "immagini": [
+        "certificazioni/prof-101.jpg"
+      ]
     }
-  ]
+  ],
+  "instagram": {
+    "attivo": true,
+    "url": "https://instagram.com/",
+    "nome": "Seguimi su Instagram"
+  }
 }
