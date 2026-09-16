@@ -1,0 +1,10 @@
+
+@media (max-width: 800px) {
+  .info-grid { grid-template-columns: repeat(2, 1fr); }
+  .certification-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .page-shell { width: min(100% - 20px, 1040px); padding-top: 20px; }
+  .hero { padding: 32px 18px 28px; }
+  .info-grid, .certification-grid, .modal-gallery { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,14 @@
+
+.certification-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cert-card {
+  padding: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md);
+  box-shadow: var(--shadow); cursor: pointer; transition: transform .18s ease;
+}
+.cert-card:hover { transform: translateY(-3px); }
+.cert-preview { aspect-ratio: 16/10; width: 100%; object-fit: cover; border-radius: 15px; background: var(--primary-soft); }
+.cert-placeholder { aspect-ratio: 16/10; border-radius: 15px; display: grid; place-items: center; background: var(--primary-soft); color: var(--primary); font-weight: 800; }
+.cert-meta { padding: 12px 4px 3px; }
+.cert-title-row { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+.cert-title-row h3 { margin: 0; font-size: 1rem; }
+.badge { white-space: nowrap; padding: 5px 8px; border-radius: 999px; background: #e5f4e9; color: #4f7d5d; font-size: .7rem; font-weight: 800; }
+.cert-date { margin: 7px 0 0; color: var(--muted); font-size: .82rem; }
