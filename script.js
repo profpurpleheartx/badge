@@ -1,257 +1,131 @@
-async function caricaPagina() {
-  const contenitore = document.getElementById("pagina");
+const $ = (id) => document.getElementById(id);
+const state = { cfg: null, certs: [], certIndex: 0, imageIndex: 0 };
 
+async function init() {
   try {
-    const risposta = await fetch(new URL("config.json", document.baseURI).href, { cache: "no-store" });
-    if (!risposta.ok) throw new Error(`HTTP ${risposta.status}`);
-    const config = await risposta.json();
-
-    if (!config.attiva) {
-      mostraStato("off");
-      return;
-    }
-
-    renderPagina(config);
-  } catch (errore) {
-    console.error(errore);
-    mostraStato("error", errore);
+    const r = await fetch("./config.json", { cache: "no-store" });
+    if (!r.ok) throw new Error("config.json non trovato");
+    state.cfg = await r.json();
+    render();
+  } catch (e) {
+    document.querySelector(".shell").innerHTML =
+      '<div style="padding:60px 25px;text-align:center"><h2>Impossibile caricare il sito</h2><p style="color:#777">Assicurati di aver caricato <b>index.html</b> e <b>config.json</b> nella stessa cartella su GitHub Pages.</p></div>';
   }
 }
 
-function renderPagina(config) {
-  const certificazioniAttive = (config.certificazioni || []).filter((c) => c.attiva);
-  const fotoHtml =
-    config.foto?.tipo === "foto" && config.foto?.url
-      ? `<img class="foto" src="${escapeAttr(config.foto.url)}" alt="Foto di ${escapeAttr(config.nome || "Professore")}" />`
-      : `<div class="foto-iniziali" aria-label="Avatar">${escapeHtml(config.foto?.inizialiAvatar || "")}</div>`;
+function render() {
+  const p = state.cfg.profilo;
+  $("name").textContent = p.nome;
+  $("nick").textContent = p.nickname;
+  $("role").textContent = p.ruolo;
+  $("playerId").textContent = p.playerId;
+  $("bio").textContent = p.bio;
 
-  const certificazioniHtml = certificazioniAttive.length
-    ? certificazioniAttive.map((c, index) => `
-      <article class="certificazione"
-        tabindex="0"
-        role="button"
-        data-cert="${escapeAttr(c.immagine || "")}"
-        data-title="${escapeAttr(c.nome || "Certificazione")}"
-        aria-label="Apri certificazione ${escapeAttr(c.nome || "")}">
-        <div class="cert-icon"><i class="ti ${escapeAttr(c.icona || "ti-certificate")}"></i></div>
-        <div class="cert-testo">
-          <div class="cert-nome">${escapeHtml(c.nome || "")}</div>
-          ${c.descrizione ? `<div class="cert-descrizione">${escapeHtml(c.descrizione)}</div>` : ""}
-        </div>
-        <div class="active"><span class="dot"></span>Attiva</div>
-      </article>
-    `).join("")
-    : `<p class="nessuna-certificazione">Nessuna certificazione attiva al momento.</p>`;
+  if (p.avatar) {
+    $("avatar").style.backgroundImage = `url("${p.avatar}")`;
+    $("avatar").textContent = "";
+  }
 
-  contenitore.innerHTML = `
-    <div class="pagina-sfondo">
-      <div class="decor decor-uno"></div>
-      <div class="decor decor-due"></div>
+  $("info").innerHTML = (state.cfg.info || [])
+    .map(
+      (x) =>
+        `<div class="infoitem"><span class="infoicon">${x.icona}</span><div><b>${x.titolo}</b><span>${x.testo}</span></div></div>`
+    )
+    .join("");
 
-      <section class="scheda">
-        <div class="topbar">
-          <button class="icon-btn" type="button" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
-          <button class="icon-btn" type="button" aria-label="Preferiti"><i class="ti ti-sparkles"></i></button>
-        </div>
+  state.certs = (state.cfg.certificazioni || []).filter((c) => c.attiva);
+  $("certs").innerHTML = state.certs
+    .map(
+      (c, i) =>
+        `<article class="cert" tabindex="0" data-i="${i}" aria-label="Apri ${esc(c.nome)}"><div class="certtop"><span class="certicon">★</span><div><div class="certname">${esc(c.nome)}</div><span class="status">● Attiva</span></div></div><div class="certdate">Ottenuta: ${esc(c.data || "")}</div><div class="certpreview">ANTEPRIMA<br>${esc(c.nome)}</div></article>`
+    )
+    .join("");
 
-        <header class="hero">
-          <div class="avatar-wrap">
-            ${fotoHtml}
-            <div class="avatar-badge"><i class="ti ti-star-filled"></i></div>
-          </div>
-          <h1 class="nome">${escapeHtml(config.nome || "")}</h1>
-          ${config.nickname ? `<p class="nickname">@${escapeHtml(config.nickname)}</p>` : ""}
-          <div class="ruolo"><i class="ti ti-school"></i><span>${escapeHtml(config.ruolo || "Professor Play!Pokémon")}</span></div>
-        </header>
-
-        ${config.playerId ? `
-        <section class="player" aria-label="Player ID">
-          <div class="player-icon"><i class="ti ti-user"></i></div>
-          <div>
-            <div class="player-label">Player ID</div>
-            <div class="player-id" id="playerId">${escapeHtml(config.playerId)}</div>
-          </div>
-          <button class="copy" id="copyPlayerId" type="button" aria-label="Copia Player ID">
-            <i class="ti ti-copy"></i>
-          </button>
-        </section>` : ""}
-
-        <section class="cert-sezione">
-          <div class="section-title">
-            <h2><i class="ti ti-award"></i> Certificazioni</h2>
-            <span class="count">${certificazioniAttive.length} attive</span>
-          </div>
-          <div class="certificazioni">${certificazioniHtml}</div>
-        </section>
-
-        <footer class="footer-pagina">
-          <div class="footer-line"></div>
-          <span>Professor Hub · Gotta teach ’em all!</span>
-        </footer>
-      </section>
-    </div>
-
-    <div class="modal" id="certModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <div class="modal-card">
-        <button class="modal-close" id="modalClose" type="button" aria-label="Chiudi"><i class="ti ti-x"></i></button>
-        <div class="modal-image-wrap">
-          <img class="modal-image" id="modalImage" alt="" />
-          <div class="modal-empty" id="modalEmpty" hidden>
-            <i class="ti ti-photo-off"></i>
-            <p>Immagine non disponibile.</p>
-            <small>Controlla il percorso indicato in config.json.</small>
-          </div>
-        </div>
-        <div class="modal-title" id="modalTitle"></div>
-      </div>
-    </div>
-
-    <div class="toast" id="toast" role="status">Player ID copiato!</div>
-  `;
-
-  inizializzaInterazioni();
-}
-
-function inizializzaInterazioni() {
-  const modal = document.getElementById("certModal");
-  const modalImage = document.getElementById("modalImage");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalClose = document.getElementById("modalClose");
-  const modalEmpty = document.getElementById("modalEmpty");
-
-  document.querySelectorAll(".certificazione").forEach((card) => {
-    card.addEventListener("click", () => apriCertificazione(card));
-    card.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        apriCertificazione(card);
+  document.querySelectorAll(".cert").forEach((el) => {
+    el.onclick = () => openCert(+el.dataset.i);
+    el.onkeydown = (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openCert(+el.dataset.i);
       }
-    });
+    };
   });
 
-  document.getElementById("copyPlayerId")?.addEventListener("click", copiaPlayerId);
-  modalClose.addEventListener("click", chiudiCertificazione);
-
-  modal.addEventListener("click", (event) => {
-    if (event.target === modal) chiudiCertificazione();
-  });
-
-  modalImage.addEventListener("load", () => {
-    modalImage.hidden = false;
-    modalEmpty.hidden = true;
-  });
-
-  modalImage.addEventListener("error", () => {
-    modalImage.hidden = true;
-    modalEmpty.hidden = false;
-  });
-
-  document.addEventListener("keydown", gestioneEscape);
+  const ig = state.cfg.instagram;
+  $("instagram").innerHTML =
+    ig && ig.attivo
+      ? `<a class="insta" href="${esc(ig.url)}" target="_blank" rel="noopener" aria-label="${esc(ig.nome)}">◎</a><div class="instagram-label">${esc(ig.nome)}</div>`
+      : "";
 }
 
-function apriCertificazione(card) {
-  const modal = document.getElementById("certModal");
-  const image = document.getElementById("modalImage");
-  const title = document.getElementById("modalTitle");
-  const empty = document.getElementById("modalEmpty");
+function esc(v) {
+  return String(v ?? "").replace(
+    /[&<>"']/g,
+    (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m])
+  );
+}
 
-  const percorso = card.dataset.cert ? new URL(card.dataset.cert, document.baseURI).href : "";
-  title.textContent = card.dataset.title || "Certificazione";
-  image.alt = `Certificazione ${card.dataset.title || ""}`;
-  image.hidden = false;
-  empty.hidden = true;
+function openCert(i) {
+  state.certIndex = i;
+  state.imageIndex = 0;
+  updateModal();
+  $("modal").classList.add("open");
+  $("modal").setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
 
-  if (percorso) {
-    image.src = percorso;
+function updateModal() {
+  const c = state.certs[state.certIndex];
+  const imgs = c.immagini || [];
+  $("modalName").textContent = c.nome;
+  $("modalDate").textContent = "Ottenuta: " + (c.data || "");
+  $("modalDetails").textContent = c.dettagli || c.descrizione || "";
+  $("counter").textContent = `${Math.min(state.imageIndex + 1, Math.max(imgs.length, 1))} / ${Math.max(imgs.length, 1)}`;
+
+  if (imgs.length) {
+    const src = imgs[state.imageIndex];
+    $("modalImg").innerHTML = `<img src="${esc(src)}" alt="${esc(c.nome)}" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span>Immagine non disponibile.<br>Controlla il percorso in config.json.</span>')">`;
   } else {
-    image.removeAttribute("src");
-    image.hidden = true;
-    empty.hidden = false;
-  }
-
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-aperta");
-  document.getElementById("modalClose").focus();
-}
-
-function chiudiCertificazione() {
-  const modal = document.getElementById("certModal");
-  const image = document.getElementById("modalImage");
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-aperta");
-  image.removeAttribute("src");
-}
-
-function gestioneEscape(event) {
-  const modal = document.getElementById("certModal");
-  if (event.key === "Escape" && modal?.classList.contains("open")) {
-    chiudiCertificazione();
+    $("modalImg").innerHTML = "<span>Nessuna immagine configurata.</span>";
   }
 }
 
-async function copiaPlayerId() {
-  const id = document.getElementById("playerId")?.textContent.trim();
-  if (!id) return;
+function closeModal() {
+  $("modal").classList.remove("open");
+  $("modal").setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
 
+$("close").onclick = closeModal;
+$("modal").onclick = (e) => {
+  if (e.target === $("modal")) closeModal();
+};
+$("prev").onclick = () => {
+  const n = (state.certs[state.certIndex].immagini || []).length;
+  if (!n) return;
+  state.imageIndex = (state.imageIndex + n - 1) % n;
+  updateModal();
+};
+$("next").onclick = () => {
+  const n = (state.certs[state.certIndex].immagini || []).length;
+  if (!n) return;
+  state.imageIndex = (state.imageIndex + 1) % n;
+  updateModal();
+};
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
+  if (!$("modal").classList.contains("open")) return;
+  if (e.key === "ArrowLeft") $("prev").click();
+  if (e.key === "ArrowRight") $("next").click();
+});
+
+$("copy").onclick = async () => {
   try {
-    await navigator.clipboard.writeText(id);
-  } catch {
-    const area = document.createElement("textarea");
-    area.value = id;
-    area.style.position = "fixed";
-    area.style.opacity = "0";
-    document.body.appendChild(area);
-    area.select();
-    document.execCommand("copy");
-    area.remove();
-  }
+    await navigator.clipboard.writeText(state.cfg.profilo.playerId);
+  } catch {}
+  $("toast").classList.add("show");
+  setTimeout(() => $("toast").classList.remove("show"), 1400);
+};
 
-  const toast = document.getElementById("toast");
-  toast.classList.add("show");
-  window.setTimeout(() => toast.classList.remove("show"), 1800);
-}
-
-function mostraStato(tipo, errore) {
-  const contenitore = document.getElementById("pagina");
-  const stati = {
-    error: {
-      icona: "ti-alert-triangle",
-      titolo: "Impossibile caricare la pagina",
-      testo: "Controlla la connessione o riprova.",
-      azione: `<button class="riprova" type="button" onclick="caricaPagina()">Riprova</button>`
-    },
-    off: {
-      icona: "ti-eye-off",
-      titolo: "Pagina non disponibile",
-      testo: "Questa pagina non è al momento disponibile.",
-      azione: ""
-    }
-  };
-  const stato = stati[tipo] || stati.error;
-  const dettaglio = tipo === "error"
-    ? `<small class="errore-dettaglio">Percorso configurazione: ${escapeHtml(new URL("config.json", document.baseURI).href)}<br>${escapeHtml(errore?.message || "Errore sconosciuto")}</small>`
-    : "";
-
-  contenitore.innerHTML = `
-    <div class="stato-pagina">
-      <div class="stato-icona"><i class="ti ${stato.icona}"></i></div>
-      <h1>${stato.titolo}</h1>
-      <p>${stato.testo}</p>
-      ${stato.azione}
-    </div>
-  `;
-}
-
-function escapeHtml(testo) {
-  const div = document.createElement("div");
-  div.textContent = testo ?? "";
-  return div.innerHTML;
-}
-
-function escapeAttr(testo) {
-  return escapeHtml(testo).replace(/"/g, "&quot;");
-}
-
-caricaPagina();
+init();

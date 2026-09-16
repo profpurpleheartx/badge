@@ -7,45 +7,7 @@
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#080d2b" media="(prefers-color-scheme: dark)">
 <title>Professor Hub</title>
-<style>
-*{box-sizing:border-box}
-:root{
- --bg:#f4f2f9;--surface:#fff;--surface2:#faf8fd;--line:#ddd7e9;
- --text:#242039;--muted:#68617b;--soft:#8a829f;--accent:#7654cf;
- --accent2:#a34df0;--accent-dark:#51409b;--good-bg:#e4f7ef;--good:#08734f;
- --shadow:0 18px 45px rgba(54,43,91,.12)
-}
-@media(prefers-color-scheme:dark){
- :root{
-  --bg:#080d2b;--surface:#11183c;--surface2:#151e48;--line:#2b3972;
-  --text:#f7f5ff;--muted:#b5b9d3;--soft:#969dbc;--accent:#a184f0;
-  --accent2:#b35cf3;--accent-dark:#c3b2ff;--good-bg:#163e35;--good:#61e0b5;
-  --shadow:0 24px 60px rgba(0,0,0,.35)
- }
-}
-html{scroll-behavior:smooth}
-body{margin:0;min-height:100vh;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:radial-gradient(700px 350px at 50% 0%,color-mix(in srgb,var(--accent) 10%,transparent),transparent 70%),var(--bg);color:var(--text)}
-button,a{font:inherit}
-.page{width:min(1180px,100%);margin:auto;padding:18px}
-.shell{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
-.header{height:55px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-bottom:1px solid var(--line)}
-.brand{font-size:16px;font-weight:900}.brand span{color:var(--accent)}
-.header-note{font-size:10px;color:var(--soft)}
-.hero{display:grid;grid-template-columns:160px 1fr 310px;gap:28px;align-items:center;padding:28px 32px 20px}
-.avatar{width:150px;height:150px;border-radius:50%;border:4px solid var(--accent-dark);outline:3px solid color-mix(in srgb,var(--accent2) 75%,transparent);background:var(--surface2) center/cover no-repeat;display:grid;place-items:center;color:var(--accent);font-size:34px;font-weight:900;box-shadow:0 10px 28px color-mix(in srgb,var(--accent) 22%,transparent)}
-.identity h1{font-size:31px;line-height:1.05;margin:0;letter-spacing:-.8px}.nick{color:var(--accent2);font-weight:850;margin-top:5px}.role{display:inline-block;margin-top:14px;padding:9px 15px;border-radius:99px;background:var(--accent-dark);color:#fff;font-size:11px;font-weight:800}
-.player{display:flex;align-items:center;gap:12px;margin-top:14px;width:max-content;max-width:100%;padding:8px 10px 8px 15px;border:1px solid var(--line);background:var(--surface);border-radius:99px;color:var(--text);cursor:pointer}.player small{color:var(--soft)}.player strong{font-size:16px}.copy{border:0;background:transparent;color:var(--accent-dark);padding:2px}
-.bio{font-size:12px;line-height:1.65;color:var(--muted)}
-.info{margin:0 32px 18px;display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface2);border:1px solid var(--line);border-radius:14px;overflow:hidden}.infoitem{min-width:0;display:flex;gap:10px;align-items:center;padding:13px 15px;border-right:1px solid var(--line)}.infoitem:last-child{border-right:0}.infoicon{flex:none;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:color-mix(in srgb,var(--accent) 18%,var(--surface));color:var(--accent-dark);font-weight:900}.infoitem b{display:block;font-size:9px;color:var(--soft)}.infoitem span{font-size:10px;color:var(--muted)}
-.content{padding:4px 32px 18px}.sectionhead{display:flex;align-items:center;justify-content:space-between;margin:10px 0 14px}.sectionhead h2{font-size:19px;margin:0}.sectionhead a{font-size:10px;color:var(--accent);text-decoration:none}
-.certs{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}.cert{min-width:0;border:1px solid var(--line);border-radius:13px;background:var(--surface);padding:10px;box-shadow:0 9px 24px color-mix(in srgb,var(--text) 7%,transparent);cursor:pointer;transition:transform .18s,border-color .18s}.cert:hover{transform:translateY(-3px);border-color:var(--accent)}.cert:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:2px}.certtop{display:flex;gap:8px;align-items:center}.certicon{width:35px;height:35px;flex:none;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,var(--accent2),var(--accent));color:#fff}.certname{font-size:10px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.status{display:inline-block;margin-top:3px;padding:3px 6px;border-radius:99px;background:var(--good-bg);color:var(--good);font-size:7px;font-weight:900}.certdate{margin:9px 0;font-size:8px;color:var(--soft)}.certpreview{height:105px;border:1px solid var(--accent);border-radius:7px;background:var(--surface2);display:grid;place-items:center;color:var(--soft);font-size:9px;font-weight:800;text-align:center}
-.instagram{text-align:center;padding:18px 0 10px}.insta{display:inline-grid;place-items:center;width:50px;height:50px;border-radius:50%;text-decoration:none;color:#fff;font-size:24px;font-weight:900;background:radial-gradient(circle at 30% 110%,#ffd600 0 12%,#ff7a00 24%,#ff0169 48%,#d300c5 68%,#7638fa 100%);box-shadow:0 8px 22px rgba(195,42,199,.25)}.instagram-label{font-size:10px;font-weight:800;margin-top:7px;color:var(--text)}
-.footer{margin:0 32px;padding:13px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--soft);font-size:9px}
-.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(5,7,24,.72);backdrop-filter:blur(8px);z-index:50}.modal.open{display:flex}.modalbox{position:relative;width:min(780px,100%);background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 35px 100px rgba(0,0,0,.45)}.close{position:absolute;right:13px;top:13px;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:var(--surface2);color:var(--text);font-size:20px;z-index:2}.modalgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}.modalimg{height:360px;border:1px solid var(--line);border-radius:10px;background:var(--surface2);display:grid;place-items:center;overflow:hidden;color:var(--soft);font-size:11px;text-align:center}.modalimg img{width:100%;height:100%;object-fit:contain}.modalname{font-size:24px;font-weight:900}.modaldate{font-size:10px;color:var(--accent);margin-top:6px}.modaldetails{font-size:12px;line-height:1.7;color:var(--muted);margin-top:17px}.gallery{display:flex;align-items:center;justify-content:space-between;margin-top:24px}.gallery button{width:38px;height:38px;border:1px solid var(--line);border-radius:10px;background:var(--surface2);color:var(--text);font-size:20px}.gallery span{font-size:10px;color:var(--soft);font-weight:800}
-.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;background:var(--text);color:var(--surface);padding:9px 13px;border-radius:10px;font-size:10px;font-weight:800;transition:.2s;z-index:100}.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:900px){.hero{grid-template-columns:120px 1fr}.avatar{width:115px;height:115px}.bio{grid-column:1/-1}.info{grid-template-columns:repeat(2,1fr)}.infoitem:nth-child(2){border-right:0}.infoitem:nth-child(3),.infoitem:nth-child(4){border-top:1px solid var(--line)}.certs{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.page{padding:0}.shell{border-radius:0;border-left:0;border-right:0;min-height:100vh}.header{padding:0 16px}.hero{padding:24px 17px 17px;grid-template-columns:82px 1fr;gap:14px}.avatar{width:80px;height:80px;font-size:20px}.identity h1{font-size:21px}.nick{font-size:13px}.role{font-size:8px;padding:8px 10px}.player{font-size:10px}.player strong{font-size:13px}.bio{font-size:11px}.info{margin:0 17px 14px}.infoitem{padding:10px 9px}.infoitem span{font-size:9px}.content{padding:4px 17px 14px}.certs{grid-template-columns:1fr 1fr;gap:8px}.cert{padding:8px}.certpreview{height:88px}.modalgrid{grid-template-columns:1fr}.modalimg{height:260px}.modalname{font-size:20px}.footer{margin:0 17px}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="page"><main class="shell">
@@ -63,47 +25,5 @@ button,a{font:inherit}
 <div class="modalbox"><button class="close" id="close" aria-label="Chiudi">×</button><div class="modalgrid"><div class="modalimg" id="modalImg"></div><div><div class="modalname" id="modalName"></div><div class="modaldate" id="modalDate"></div><div class="modaldetails" id="modalDetails"></div><div class="gallery"><button id="prev" aria-label="Immagine precedente">‹</button><span id="counter"></span><button id="next" aria-label="Immagine successiva">›</button></div></div></div></div>
 </div>
 <div class="toast" id="toast">Player ID copiato!</div>
-<script>
-const $=id=>document.getElementById(id);
-const state={cfg:null,certs:[],certIndex:0,imageIndex:0};
-async function init(){
- try{
-  const r=await fetch("./config.json",{cache:"no-store"});
-  if(!r.ok) throw new Error("config.json non trovato");
-  state.cfg=await r.json(); render();
- }catch(e){
-  document.querySelector(".shell").innerHTML='<div style="padding:60px 25px;text-align:center"><h2>Impossibile caricare il sito</h2><p style="color:#777">Assicurati di aver caricato <b>index.html</b> e <b>config.json</b> nella stessa cartella su GitHub Pages.</p></div>';
- }
-}
-function render(){
- const p=state.cfg.profilo;
- $("name").textContent=p.nome;$("nick").textContent=p.nickname;$("role").textContent=p.ruolo;$("playerId").textContent=p.playerId;$("bio").textContent=p.bio;
- if(p.avatar){$("avatar").style.backgroundImage=`url("${p.avatar}")`;$("avatar").textContent=""}
- $("info").innerHTML=(state.cfg.info||[]).map(x=>`<div class="infoitem"><span class="infoicon">${x.icona}</span><div><b>${x.titolo}</b><span>${x.testo}</span></div></div>`).join("");
- state.certs=(state.cfg.certificazioni||[]).filter(c=>c.attiva);
- $("certs").innerHTML=state.certs.map((c,i)=>`<article class="cert" tabindex="0" data-i="${i}" aria-label="Apri ${esc(c.nome)}"><div class="certtop"><span class="certicon">★</span><div><div class="certname">${esc(c.nome)}</div><span class="status">● Attiva</span></div></div><div class="certdate">Ottenuta: ${esc(c.data||"")}</div><div class="certpreview">ANTEPRIMA<br>${esc(c.nome)}</div></article>`).join("");
- document.querySelectorAll(".cert").forEach(el=>{el.onclick=()=>openCert(+el.dataset.i);el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openCert(+el.dataset.i)}}});
- const ig=state.cfg.instagram;
- $("instagram").innerHTML=ig&&ig.attivo?`<a class="insta" href="${esc(ig.url)}" target="_blank" rel="noopener" aria-label="${esc(ig.nome)}">◎</a><div class="instagram-label">${esc(ig.nome)}</div>`:"";
-}
-function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-function openCert(i){state.certIndex=i;state.imageIndex=0;updateModal();$("modal").classList.add("open");$("modal").setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}
-function updateModal(){
- const c=state.certs[state.certIndex],imgs=c.immagini||[];
- $("modalName").textContent=c.nome;$("modalDate").textContent="Ottenuta: "+(c.data||"");$("modalDetails").textContent=c.dettagli||c.descrizione||"";
- $("counter").textContent=`${Math.min(state.imageIndex+1,Math.max(imgs.length,1))} / ${Math.max(imgs.length,1)}`;
- if(imgs.length){
-  const src=imgs[state.imageIndex];
-  $("modalImg").innerHTML=`<img src="${esc(src)}" alt="${esc(c.nome)}" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span>Immagine non disponibile.<br>Controlla il percorso in config.json.</span>')">`;
- }else $("modalImg").innerHTML="<span>Nessuna immagine configurata.</span>";
-}
-function closeModal(){$("modal").classList.remove("open");$("modal").setAttribute("aria-hidden","true");document.body.style.overflow=""}
-$("close").onclick=closeModal;
-$("modal").onclick=e=>{if(e.target===$("modal"))closeModal()};
-$("prev").onclick=()=>{const n=(state.certs[state.certIndex].immagini||[]).length;if(!n)return;state.imageIndex=(state.imageIndex+n-1)%n;updateModal()};
-$("next").onclick=()=>{const n=(state.certs[state.certIndex].immagini||[]).length;if(!n)return;state.imageIndex=(state.imageIndex+1)%n;updateModal()};
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();if(!$("modal").classList.contains("open"))return;if(e.key==="ArrowLeft")$("prev").click();if(e.key==="ArrowRight")$("next").click()});
-$("copy").onclick=async()=>{try{await navigator.clipboard.writeText(state.cfg.profilo.playerId)}catch{}$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),1400)};
-init();
-</script>
+<script src="script.js"></script>
 </body></html>
