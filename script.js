@@ -2,7 +2,7 @@ async function caricaPagina() {
   const contenitore = document.getElementById("pagina");
 
   try {
-    const risposta = await fetch("./config.json", { cache: "no-store" });
+    const risposta = await fetch(new URL("config.json", document.baseURI).href, { cache: "no-store" });
     if (!risposta.ok) throw new Error(`HTTP ${risposta.status}`);
     const config = await risposta.json();
 
@@ -14,7 +14,7 @@ async function caricaPagina() {
     renderPagina(config);
   } catch (errore) {
     console.error(errore);
-    mostraStato("error");
+    mostraStato("error", errore);
   }
 }
 
@@ -155,7 +155,7 @@ function apriCertificazione(card) {
   const title = document.getElementById("modalTitle");
   const empty = document.getElementById("modalEmpty");
 
-  const percorso = card.dataset.cert;
+  const percorso = card.dataset.cert ? new URL(card.dataset.cert, document.baseURI).href : "";
   title.textContent = card.dataset.title || "Certificazione";
   image.alt = `Certificazione ${card.dataset.title || ""}`;
   image.hidden = false;
@@ -213,7 +213,7 @@ async function copiaPlayerId() {
   window.setTimeout(() => toast.classList.remove("show"), 1800);
 }
 
-function mostraStato(tipo) {
+function mostraStato(tipo, errore) {
   const contenitore = document.getElementById("pagina");
   const stati = {
     error: {
@@ -230,6 +230,9 @@ function mostraStato(tipo) {
     }
   };
   const stato = stati[tipo] || stati.error;
+  const dettaglio = tipo === "error"
+    ? `<small class="errore-dettaglio">Percorso configurazione: ${escapeHtml(new URL("config.json", document.baseURI).href)}<br>${escapeHtml(errore?.message || "Errore sconosciuto")}</small>`
+    : "";
 
   contenitore.innerHTML = `
     <div class="stato-pagina">
