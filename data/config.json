@@ -1,15 +1,15 @@
 {
-  "nome": "Irene Solimeno",
+  "nome": "Irene S.",
   "nickname": "@Purpleheartx",
-  "ruolo": "Professor Play! Pokémon",
+  "ruolo": "Play!Pokémon Professor",
   "playerId": "5255484",
   "rango": {
-    "nome": "Green",
+    "nome": "Green Rank",
     "colore": "#4C9A72"
   },
-  "bio": "Appassionata di Pokémon TCG, mi impegno ogni giorno per creare ambienti di gioco inclusivi, divertenti e sempre all'insegna del rispetto.",
+  "bio": "Appassionata di Pokémon sin dalla prima cartuccia, mi impegno ogni giorno per creare ambienti di gioco inclusivi, divertenti e sempre all'insegna del rispetto reciproco.",
   "avatar": "",
-  "instagram": "https://instagram.com/",
+  "instagram": "https://instagram.com/profpurpleheartx",
   "info": [
     {
       "titolo": "Dal 2022",
@@ -17,8 +17,8 @@
       "icona": "assets/icons/calendar.svg"
     },
     {
-      "titolo": "Napoli",
-      "testo": "Lega Campania",
+      "titolo": "Arezzo",
+      "testo": "Lega Toscana",
       "icona": "assets/icons/location.svg"
     },
     {
@@ -37,31 +37,41 @@
       "nome": "Organizer",
       "data": "12/03/2024",
       "descrizione": "Organizzazione di eventi e tornei Pokémon TCG.",
-      "immagini": ["assets/certifications/organizer.jpg"]
+      "immagini": [
+        "assets/certifications/organizer.jpg"
+      ]
     },
     {
       "nome": "Deck Check",
       "data": "18/07/2024",
       "descrizione": "Controllo mazzi e regolamenti.",
-      "immagini": ["assets/certifications/deck-check.jpg"]
+      "immagini": [
+        "assets/certifications/deck-check.jpg"
+      ]
     },
     {
       "nome": "League Assistant",
       "data": "22/11/2023",
       "descrizione": "Supporto alla Lega Pokémon.",
-      "immagini": ["assets/certifications/league-assistant.jpg"]
+      "immagini": [
+        "assets/certifications/league-assistant.jpg"
+      ]
     },
     {
       "nome": "Condotta Professori",
       "data": "03/02/2025",
       "descrizione": "Educazione e valori Pokémon.",
-      "immagini": ["assets/certifications/condotta-professori.jpg"]
+      "immagini": [
+        "assets/certifications/condotta-professori.jpg"
+      ]
     },
     {
-      "nome": "Prof. 101",
+      "nome": "PROF 101",
       "data": "15/09/2023",
       "descrizione": "Formazione e aggiornamento.",
-      "immagini": ["assets/certifications/prof-101.jpg"]
+      "immagini": [
+        "assets/certifications/prof-101.jpg"
+      ]
     }
   ]
 }
