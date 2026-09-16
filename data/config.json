@@ -3,6 +3,10 @@
   "nickname": "@Purpleheartx",
   "ruolo": "Professor Play! Pokémon",
   "playerId": "5255484",
+  "rango": {
+    "nome": "Green",
+    "colore": "#4C9A72"
+  },
   "bio": "Appassionata di Pokémon TCG, mi impegno ogni giorno per creare ambienti di gioco inclusivi, divertenti e sempre all'insegna del rispetto.",
   "avatar": "",
   "instagram": "https://instagram.com/",
@@ -10,22 +14,22 @@
     {
       "titolo": "Dal 2022",
       "testo": "nel mondo Pokémon",
-      "icona": "icons/calendar.svg"
+      "icona": "assets/icons/calendar.svg"
     },
     {
       "titolo": "Napoli",
       "testo": "Lega Campania",
-      "icona": "icons/location.svg"
+      "icona": "assets/icons/location.svg"
     },
     {
       "titolo": "Specializzazioni",
       "testo": "Tornei · Deck Check · Organizzazione",
-      "icona": "icons/star.svg"
+      "icona": "assets/icons/star.svg"
     },
     {
       "titolo": "Lingue",
       "testo": "Italiano · English",
-      "icona": "icons/language.svg"
+      "icona": "assets/icons/language.svg"
     }
   ],
   "certificazioni": [
@@ -33,31 +37,31 @@
       "nome": "Organizer",
       "data": "12/03/2024",
       "descrizione": "Organizzazione di eventi e tornei Pokémon TCG.",
-      "immagini": []
+      "immagini": ["assets/certifications/organizer.jpg"]
     },
     {
       "nome": "Deck Check",
       "data": "18/07/2024",
       "descrizione": "Controllo mazzi e regolamenti.",
-      "immagini": []
+      "immagini": ["assets/certifications/deck-check.jpg"]
     },
     {
       "nome": "League Assistant",
       "data": "22/11/2023",
       "descrizione": "Supporto alla Lega Pokémon.",
-      "immagini": []
+      "immagini": ["assets/certifications/league-assistant.jpg"]
     },
     {
       "nome": "Condotta Professori",
       "data": "03/02/2025",
       "descrizione": "Educazione e valori Pokémon.",
-      "immagini": []
+      "immagini": ["assets/certifications/condotta-professori.jpg"]
     },
     {
       "nome": "Prof. 101",
       "data": "15/09/2023",
       "descrizione": "Formazione e aggiornamento.",
-      "immagini": []
+      "immagini": ["assets/certifications/prof-101.jpg"]
     }
   ]
 }
