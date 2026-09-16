@@ -1,15 +1,5 @@
-
-import { $ } from "../utils/dom.js";
-export function initPlayerId(showToast) {
-  const button = $("#player-id");
-  if (!button) return;
-  button.addEventListener("click", async () => {
-    const id = button.querySelector("strong")?.textContent || "";
-    try {
-      await navigator.clipboard.writeText(id);
-      showToast("Player ID copiato");
-    } catch {
-      showToast(id);
-    }
-  });
+import {$} from "../utils/dom.js";
+import {showToast} from "./toast.js";
+export function initPlayerId(playerId){
+  $("#copy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(playerId)}catch{} showToast("Player ID copiato! ✦")});
 }

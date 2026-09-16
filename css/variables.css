@@ -1,15 +1,2 @@
-
-:root {
-  --bg: #fff8fb;
-  --surface: rgba(255,255,255,.82);
-  --surface-strong: #ffffff;
-  --text: #453c48;
-  --muted: #817582;
-  --primary: #c58bb5;
-  --primary-soft: #f1dbea;
-  --accent: #f0b9c9;
-  --line: #eadce6;
-  --shadow: 0 18px 50px rgba(118, 83, 108, .12);
-  --radius-lg: 28px;
-  --radius-md: 20px;
-}
+/* Design tokens from the source site. */
+:root{color-scheme:light dark;--bg:#f7f5ff;--surface:rgba(255,255,255,.78);--surface2:#fffdfd;--ink:#30286b;--muted:#756d91;--soft:#9a91b1;--line:#dfd4f5;--accent:#8d68df;--pink:#d27bc5;--lav:#e9dcff;--pinkbg:#f9e1f3;--bluebg:#e2ddff;--shadow:0 18px 48px rgba(100,75,160,.12)}
