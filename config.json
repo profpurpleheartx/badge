@@ -6,13 +6,44 @@
   "foto": {
     "tipo": "avatar",
     "url": "./foto.jpg",
-    "inizialiAvatar": "ST"
+    "inizialiAvatar": "IS"
   },
+  "ruolo": "Professor Play!Pokémon",
   "certificazioni": [
-    { "nome": "Organizer", "attiva": true },
-    { "nome": "Deck Check", "attiva": true },
-    { "nome": "League Assistant", "attiva": true },
-    { "nome": "La Condotta dei Professori", "attiva": true },
-    { "nome": "PROF 101", "attiva": true }
+    {
+      "nome": "Organizer",
+      "descrizione": "Gestione eventi e tornei",
+      "icona": "ti-calendar-event",
+      "immagine": "./certificazioni/organizer.jpg",
+      "attiva": true
+    },
+    {
+      "nome": "Deck Check",
+      "descrizione": "Controllo mazzi e regolamenti",
+      "icona": "ti-cards",
+      "immagine": "./certificazioni/deck-check.jpg",
+      "attiva": true
+    },
+    {
+      "nome": "League Assistant",
+      "descrizione": "Supporto alla Lega Pokémon",
+      "icona": "ti-pokeball",
+      "immagine": "./certificazioni/league-assistant.jpg",
+      "attiva": true
+    },
+    {
+      "nome": "La Condotta dei Professori",
+      "descrizione": "Educazione e valori Pokémon",
+      "icona": "ti-book",
+      "immagine": "./certificazioni/condotta-professori.jpg",
+      "attiva": true
+    },
+    {
+      "nome": "PROF 101",
+      "descrizione": "Formazione e aggiornamento",
+      "icona": "ti-star",
+      "immagine": "./certificazioni/prof-101.jpg",
+      "attiva": true
+    }
   ]
 }
