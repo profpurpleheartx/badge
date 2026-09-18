@@ -1,4 +1,8 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;position:relative;color:var(--ink);font-family:var(--font-body);background:radial-gradient(700px 420px at 5% 0%,#eadcff 0,transparent 70%),radial-gradient(700px 420px at 100% 18%,#f9ddf0 0,transparent 70%),radial-gradient(rgba(141,104,223,.14) 1px,transparent 1.4px) 0 0/24px 24px,radial-gradient(rgba(210,123,197,.16) 1.4px,transparent 1.6px) 12px 12px/48px 48px,var(--bg);transition:background .25s,color .25s}
 .page{position:relative;z-index:1}
 .pokeball-dot{display:inline-block;vertical-align:-2px}
+.sparkle-layer{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
+.sparkle-bit{position:absolute;transform:translate(-50%,-50%);line-height:1;pointer-events:none;will-change:transform,opacity;animation:sparkle-burst .68s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes sparkle-burst{0%{transform:translate(-50%,-50%) translate(0,0) scale(.4) rotate(0deg);opacity:1}100%{transform:translate(-50%,-50%) translate(var(--dx),var(--dy)) scale(1) rotate(var(--rot));opacity:0}}
+@media(prefers-reduced-motion:reduce){.sparkle-bit{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}

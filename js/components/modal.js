@@ -1,4 +1,5 @@
 import {$,$$} from "../utils/dom.js";
+import {burstSparkles} from "./sparkle.js";
 let items=[],idx=0,imgIdx=0;
 export function initCertificationModal(certifications=[]){
   items=certifications; const modal=$("#modal");
@@ -20,7 +21,7 @@ export function initCertificationModal(certifications=[]){
     updateMedia();
   };
   const open=i=>{modal.classList.remove("open"); void modal.offsetWidth; idx=i;update();modal.classList.add("open");$("#close").focus()};
-  $$(".cert").forEach(card=>{const openCard=()=>open(Number(card.dataset.i));card.addEventListener("click",openCard);card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openCard()}})});
+  $$(".cert").forEach(card=>{const openCard=(e)=>{const r=card.getBoundingClientRect();burstSparkles(e&&e.clientX?e.clientX:r.left+r.width/2, e&&e.clientY?e.clientY:r.top+r.height/2, "#d27bc5");open(Number(card.dataset.i))};card.addEventListener("click",openCard);card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openCard()}})});
   $("#close").addEventListener("click",()=>modal.classList.remove("open")); modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("open")});
   $("#prev").addEventListener("click",()=>{const imgs=currentImgs(); if(imgs.length<2)return; imgIdx=(imgIdx+imgs.length-1)%imgs.length; updateMedia()});
   $("#next").addEventListener("click",()=>{const imgs=currentImgs(); if(imgs.length<2)return; imgIdx=(imgIdx+1)%imgs.length; updateMedia()});
