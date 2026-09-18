@@ -6,6 +6,7 @@ import {renderInfoCards} from "./render/renderInfoCards.js";
 import {renderCertifications} from "./render/renderCertifications.js";
 import {initPlayerId} from "./components/playerId.js";
 import {initCertificationModal} from "./components/modal.js";
+import {initCertTilt} from "./components/certTilt.js";
 
 async function start(){
   try{
@@ -17,6 +18,7 @@ async function start(){
     $("#instagramLink").href=config.instagram||"#";
     initPlayerId(config.playerId||"");
     initCertificationModal(config.certificazioni||[]);
+    initCertTilt();
   }catch(error){console.error(error); $("#appError").hidden=false;}
 }
 start();

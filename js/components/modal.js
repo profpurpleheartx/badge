@@ -19,7 +19,7 @@ export function initCertificationModal(certifications=[]){
     imgIdx=0;
     updateMedia();
   };
-  const open=i=>{idx=i;update();modal.classList.add("open");$("#close").focus()};
+  const open=i=>{modal.classList.remove("open"); void modal.offsetWidth; idx=i;update();modal.classList.add("open");$("#close").focus()};
   $$(".cert").forEach(card=>{const openCard=()=>open(Number(card.dataset.i));card.addEventListener("click",openCard);card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openCard()}})});
   $("#close").addEventListener("click",()=>modal.classList.remove("open")); modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("open")});
   $("#prev").addEventListener("click",()=>{const imgs=currentImgs(); if(imgs.length<2)return; imgIdx=(imgIdx+imgs.length-1)%imgs.length; updateMedia()});

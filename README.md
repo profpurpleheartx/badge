@@ -9,6 +9,12 @@ Pagina profilo statica per Professor Play! Pokémon, pubblicabile su GitHub Page
 - `css/` — stile, diviso per componente
 - `js/` — logica: caricamento config, rendering, componenti, utility
 
+## Cambiare il rango (Green/Gold/Red/Violet/Diamond)
+Apri `data/config.json` su GitHub, trova la riga `"rango": "green"` e sostituisci
+la parola con una di: `green`, `gold`, `red`, `violet`, `diamond`. Salva (commit):
+il medaglione in basso a destra sulla foto profilo si aggiorna da solo, senza
+toccare altro file. La mappa colori/immagini è in `js/data/ranks.js`.
+
 ## Sviluppo locale
 Servire la cartella con un server HTTP (non aprire `index.html` con `file://`,
 altrimenti il fetch di `data/config.json` viene bloccato dalle policy CORS).
