@@ -1,8 +1,9 @@
-/* Schermata unica: da 820px di larghezza in su (iPad in verticale, iPad in
-   orizzontale, desktop) la pagina sta tutta in una videata e NON scorre.
-   Sotto quella soglia — cioè su iPhone — resta il comportamento a scorrimento
-   di sempre, come deciso con Irene. */
-@media (min-width: 820px) and (min-height: 560px) {
+/* Schermata unica: solo quando la finestra è abbastanza grande da mostrare
+   tutto (almeno 1024px di larghezza e 820px di altezza): la pagina sta in una
+   videata e NON scorre. Sotto quelle misure — iPhone, iPad in verticale,
+   portatili o finestre basse, zoom alto — la pagina scorre normalmente e le
+   certificazioni si leggono per intero, descrizione compresa (scelta di Irene). */
+@media (min-width: 1024px) and (min-height: 820px) {
   html, body { height: 100%; overflow: hidden; }
   .page { height: 100%; padding: 14px; display: flex; }
   .shell { flex: 1; min-height: 0; display: flex; flex-direction: column; }
@@ -22,14 +23,4 @@
 
   /* Le certificazioni sono già tutte a schermo: il link perde senso. */
   #vediTutte { display: none; }
-
-  /* Su schermi bassi (iPad in orizzontale, portatili 13") si comprime ancora. */
-  @media (max-height: 800px) {
-    .hero { padding: 14px 22px 12px; gap: 16px; }
-    .bio { padding: 12px; font-size: 12px; }
-    .cert-img { height: 104px; }
-    .cert-body { padding: 8px 9px 10px; }
-    .certdesc { display: none; }
-    .instagram span { display: none; }
-  }
 }
