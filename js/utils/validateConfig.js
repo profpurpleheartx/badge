@@ -42,6 +42,17 @@ export function validateConfig(config = {}) {
       LINGUE.forEach((lingua) => {
         if (!voce[lingua]) console.warn(`[Professor Hub] Info-card ${i + 1}: traduzione "${lingua}" mancante.`);
       });
+      if (voce.dettaglio !== undefined) {
+        const d = voce.dettaglio;
+        if (!d || typeof d !== "object" || Array.isArray(d)) {
+          console.warn(`[Professor Hub] Info-card ${i + 1}: "dettaglio" non valido, la scheda non aprirà nessuna finestra.`);
+        } else {
+          if (!Array.isArray(d.voci)) console.warn(`[Professor Hub] Info-card ${i + 1}: "dettaglio.voci" mancante o non è un elenco.`);
+          LINGUE.forEach((lingua) => {
+            if (!d[lingua]) console.warn(`[Professor Hub] Info-card ${i + 1}: "dettaglio.${lingua}" mancante (titolo della finestra).`);
+          });
+        }
+      }
     });
   }
 

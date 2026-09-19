@@ -9,6 +9,7 @@ import {renderInfoCards} from "./render/renderInfoCards.js";
 import {renderCertifications} from "./render/renderCertifications.js";
 import {initPlayerId} from "./components/playerId.js";
 import {initCertificationModal} from "./components/modal.js";
+import {initInfoModal} from "./components/infoModal.js";
 import {initCertTilt} from "./components/certTilt.js";
 
 let config=null,lang=getLingua(),certificazioniLocali=[];
@@ -45,7 +46,7 @@ function disegna(){
 
   const certificazioni=config.certificazioni||[];
   renderHero(config,lang,ui);
-  renderInfoCards(config.info||[],lang);
+  renderInfoCards(config.info||[],lang,ui);
   renderCertifications(certificazioni,lang,ui);
 
   const sezione=$("#certificazioni");
@@ -54,6 +55,7 @@ function disegna(){
 
   initPlayerId((config.profilo||{}).playerId||"",ui);
   initCertificationModal(certificazioni,lang,ui);
+  initInfoModal(config.info||[],lang,ui);
   initCertTilt();
 }
 

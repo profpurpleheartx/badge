@@ -30,7 +30,9 @@ export const UI = {
     erroreCaricamento: "Impossibile caricare il profilo. Controlla data/config.json.",
     cambiaLingua: "Passa all'inglese",
     profiloNonDisponibile: "Profilo non disponibile",
-    avatarDi: "Foto di"
+    avatarDi: "Foto di",
+    apriDettagli: "Apri i dettagli",
+    apriInMappe: "Apri in Mappe →"
   },
   en: {
     brand: "Professor",
@@ -60,7 +62,9 @@ export const UI = {
     erroreCaricamento: "Could not load the profile. Check data/config.json.",
     cambiaLingua: "Switch to Italian",
     profiloNonDisponibile: "Profile not available",
-    avatarDi: "Photo of"
+    avatarDi: "Photo of",
+    apriDettagli: "Open details",
+    apriInMappe: "Open in Maps →"
   }
 };
 
