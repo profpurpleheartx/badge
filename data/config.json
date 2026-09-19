@@ -1,74 +1,93 @@
 {
-  "nome": "Irene S.",
-  "nickname": "@Purpleheartx",
-  "ruolo": "Play!Pokémon Professor",
-  "playerId": "5255484",
-  "rango": "green",
-  "bio": "Appassionata di Pokémon sin dalla prima cartuccia, mi impegno ogni giorno per creare ambienti di gioco inclusivi, divertenti e sempre all'insegna del rispetto reciproco.",
-  "avatar": "",
-  "instagram": "https://instagram.com/profpurpleheartx",
+  "_nota": "Unica fonte dei contenuti della pagina. Non esistono testi scritti a mano dentro index.html: tutto parte da qui. Le etichette dell'interfaccia (pulsanti, titoli di sezione) stanno invece in js/data/i18n.js.",
+
+  "attiva": true,
+
+  "profilo": {
+    "nome": "Irene S.",
+    "nickname": "@Purpleheartx",
+    "playerId": "5255484",
+    "rango": "green",
+    "avatar": "",
+    "instagram": "https://instagram.com/profpurpleheartx"
+  },
+
+  "testi": {
+    "it": {
+      "ruolo": "Professoressa Play!Pokémon",
+      "bio": "Appassionata di Pokémon sin dalla prima cartuccia, mi impegno ogni giorno per creare ambienti di gioco inclusivi, divertenti e sempre all'insegna del rispetto reciproco.",
+      "messaggioDisattivata": "Torno presto! In questo momento il profilo non è disponibile."
+    },
+    "en": {
+      "ruolo": "Play!Pokémon Professor",
+      "bio": "A Pokémon fan since my very first cartridge, I work every day to create game spaces that are inclusive, fun and always built on mutual respect.",
+      "messaggioDisattivata": "Back soon! This profile is not available right now."
+    }
+  },
+
   "info": [
     {
-      "titolo": "Dal 2022",
-      "testo": "nel mondo Pokémon",
-      "icona": "assets/icons/calendar.svg"
+      "icona": "assets/icons/calendar.svg",
+      "it": { "titolo": "Dal 2022", "testo": "nel mondo Pokémon" },
+      "en": { "titolo": "Since 2022", "testo": "in the Pokémon world" }
     },
     {
-      "titolo": "Arezzo",
-      "testo": "Lega Toscana",
-      "icona": "assets/icons/location.svg"
+      "icona": "assets/icons/location.svg",
+      "it": { "titolo": "Arezzo", "testo": "Lega Toscana" },
+      "en": { "titolo": "Arezzo", "testo": "Tuscany League" }
     },
     {
-      "titolo": "Specializzazioni",
-      "testo": "Tornei · Deck Check · Organizzazione",
-      "icona": "assets/icons/star.svg"
+      "icona": "assets/icons/star.svg",
+      "it": { "titolo": "Specializzazioni", "testo": "Tornei · Deck Check · Organizzazione" },
+      "en": { "titolo": "Specialisations", "testo": "Tournaments · Deck Check · Organisation" }
     },
     {
-      "titolo": "Lingue",
-      "testo": "Italiano · English",
-      "icona": "assets/icons/language.svg"
+      "icona": "assets/icons/language.svg",
+      "it": { "titolo": "Lingue", "testo": "Italiano · English" },
+      "en": { "titolo": "Languages", "testo": "Italian · English" }
     }
   ],
+
   "certificazioni": [
     {
       "nome": "Organizer",
       "data": "12/03/2024",
-      "descrizione": "Organizzazione di eventi e tornei Pokémon TCG.",
-      "immagini": [
-        "assets/certifications/organizer.jpg"
-      ]
+      "stato": "attiva",
+      "immagini": [],
+      "it": { "descrizione": "Organizzazione di eventi e tornei Pokémon TCG." },
+      "en": { "descrizione": "Running Pokémon TCG events and tournaments." }
     },
     {
       "nome": "Deck Check",
       "data": "18/07/2024",
-      "descrizione": "Controllo mazzi e regolamenti.",
-      "immagini": [
-        "assets/certifications/deck-check.jpg"
-      ]
+      "stato": "attiva",
+      "immagini": [],
+      "it": { "descrizione": "Controllo mazzi e regolamenti." },
+      "en": { "descrizione": "Deck checking and rules enforcement." }
     },
     {
       "nome": "League Assistant",
       "data": "22/11/2023",
-      "descrizione": "Supporto alla Lega Pokémon.",
-      "immagini": [
-        "assets/certifications/league-assistant.jpg"
-      ]
+      "stato": "attiva",
+      "immagini": [],
+      "it": { "descrizione": "Supporto alla Lega Pokémon." },
+      "en": { "descrizione": "Supporting the Pokémon League." }
     },
     {
       "nome": "Condotta Professori",
       "data": "03/02/2025",
-      "descrizione": "Educazione e valori Pokémon.",
-      "immagini": [
-        "assets/certifications/condotta-professori.jpg"
-      ]
+      "stato": "attiva",
+      "immagini": [],
+      "it": { "descrizione": "Educazione e valori Pokémon." },
+      "en": { "descrizione": "Pokémon education and values." }
     },
     {
       "nome": "PROF 101",
       "data": "15/09/2023",
-      "descrizione": "Formazione e aggiornamento.",
-      "immagini": [
-        "assets/certifications/prof-101.jpg"
-      ]
+      "stato": "attiva",
+      "immagini": [],
+      "it": { "descrizione": "Formazione e aggiornamento." },
+      "en": { "descrizione": "Training and continuing education." }
     }
   ]
 }
