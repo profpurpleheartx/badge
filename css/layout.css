@@ -16,6 +16,7 @@
 
 /* Pagina disattivata dall'interruttore "attiva" in config.json */
 .offline-screen{position:fixed;inset:0;display:grid;place-items:center;padding:24px;z-index:40}
+.offline-screen[hidden]{display:none}
 .offline-box{max-width:420px;padding:34px 30px;border:1px solid #d8c8fa;border-radius:22px;background:var(--surface2);box-shadow:var(--shadow);text-align:center}
 .offline-mark{width:44px;height:44px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#ee9fda,#8b6be7);color:#fff;font-size:20px}
 .offline-box h1{margin:0;font-size:24px;font-family:var(--font-display);font-weight:700;color:var(--ink)}
