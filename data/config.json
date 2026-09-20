@@ -1,8 +1,6 @@
 {
   "_nota": "Unica fonte dei contenuti della pagina. Non esistono testi scritti a mano dentro index.html: tutto parte da qui. Le etichette dell'interfaccia (pulsanti, titoli di sezione) stanno invece in js/data/i18n.js.",
-
   "attiva": true,
-
   "profilo": {
     "nome": "Irene S.",
     "nickname": "@Purpleheartx",
@@ -11,7 +9,6 @@
     "avatar": "",
     "instagram": "https://instagram.com/profpurpleheartx"
   },
-
   "testi": {
     "it": {
       "ruolo": "Professoressa Play!Pokémon",
@@ -24,35 +21,84 @@
       "messaggioDisattivata": "Back soon! This profile is not available right now."
     }
   },
-
   "info": [
     {
       "icona": "assets/icons/calendar.svg",
-      "it": { "titolo": "Dal 2022", "testo": "nel mondo Pokémon" },
-      "en": { "titolo": "Since 2022", "testo": "in the Pokémon world" },
+      "it": {
+        "titolo": "Dal 2022",
+        "testo": "nel mondo Pokémon"
+      },
+      "en": {
+        "titolo": "Since 2022",
+        "testo": "in the Pokémon world"
+      },
       "dettaglio": {
         "tipo": "timeline",
-        "it": { "titolo": "Il mio percorso" },
-        "en": { "titolo": "My journey" },
+        "it": {
+          "titolo": "Il mio percorso"
+        },
+        "en": {
+          "titolo": "My journey"
+        },
         "voci": [
-          { "quando": "2003", "it": "La mia prima cartuccia Pokémon.", "en": "My very first Pokémon game." },
-          { "quando": "2022", "it": "L'ingresso nel mondo Play!Pokémon.", "en": "Joining the Play!Pokémon world." },
-          { "quando": "15/09/2023", "it": "PROF 101", "en": "PROF 101" },
-          { "quando": "22/11/2023", "it": "League Assistant", "en": "League Assistant" },
-          { "quando": "12/03/2024", "it": "Organizer", "en": "Organizer" },
-          { "quando": "18/07/2024", "it": "Deck Check", "en": "Deck Check" },
-          { "quando": "03/02/2025", "it": "La Condotta dei Professori", "en": "The Professors' Code of Conduct" }
+          {
+            "quando": "2003",
+            "it": "La mia prima cartuccia Pokémon.",
+            "en": "My very first Pokémon game."
+          },
+          {
+            "quando": "2022",
+            "it": "L'ingresso nel mondo Play!Pokémon.",
+            "en": "Joining the Play!Pokémon world."
+          },
+          {
+            "quando": "15/09/2023",
+            "it": "PROF 101",
+            "en": "PROF 101"
+          },
+          {
+            "quando": "22/11/2023",
+            "it": "League Assistant",
+            "en": "League Assistant"
+          },
+          {
+            "quando": "12/03/2024",
+            "it": "Organizer",
+            "en": "Organizer"
+          },
+          {
+            "quando": "18/07/2024",
+            "it": "Deck Check",
+            "en": "Deck Check"
+          },
+          {
+            "quando": "03/02/2025",
+            "it": "La Condotta dei Professori",
+            "en": "The Professors' Code of Conduct"
+          }
         ]
       }
     },
     {
       "icona": "assets/icons/location.svg",
-      "it": { "titolo": "Arezzo", "testo": "Lega Toscana" },
-      "en": { "titolo": "Arezzo", "testo": "Tuscany League" },
+      "it": {
+        "titolo": "Arezzo",
+        "testo": "Lega Toscana"
+      },
+      "en": {
+        "titolo": "Arezzo",
+        "testo": "Tuscany League"
+      },
       "dettaglio": {
         "tipo": "luoghi",
-        "it": { "titolo": "Dove trovarmi", "intro": "Organizzo e seguo eventi ad Arezzo. Qui trovi dove incontrarci." },
-        "en": { "titolo": "Where to find me", "intro": "I run and support events in Arezzo. Here is where to find us." },
+        "it": {
+          "titolo": "Dove trovarmi",
+          "intro": "Organizzo e seguo eventi ad Arezzo. Qui trovi dove incontrarci."
+        },
+        "en": {
+          "titolo": "Where to find me",
+          "intro": "I run and support events in Arezzo. Here is where to find us."
+        },
         "voci": [
           {
             "nome": "Fortezza MangaComics",
@@ -64,75 +110,138 @@
     },
     {
       "icona": "assets/icons/star.svg",
-      "it": { "titolo": "Specializzazioni", "testo": "Tornei · Deck Check · Organizzazione" },
-      "en": { "titolo": "Specialisations", "testo": "Tournaments · Deck Check · Organisation" },
+      "it": {
+        "titolo": "Specializzazioni",
+        "testo": "Tornei · Deck Check · Organizzazione"
+      },
+      "en": {
+        "titolo": "Specialisations",
+        "testo": "Tournaments · Deck Check · Organisation"
+      },
       "dettaglio": {
         "tipo": "elenco",
-        "it": { "titolo": "Le mie specializzazioni" },
-        "en": { "titolo": "My specialisations" },
+        "it": {
+          "titolo": "Le mie specializzazioni"
+        },
+        "en": {
+          "titolo": "My specialisations"
+        },
         "voci": [
           {
-            "it": { "titolo": "Tornei", "testo": "Gestisco tornei del Pokémon TCG, dalle iscrizioni ai risultati, con attenzione a regole e correttezza." },
-            "en": { "titolo": "Tournaments", "testo": "I run Pokémon TCG tournaments, from registration to results, with attention to rules and fair play." }
+            "it": {
+              "titolo": "Tornei",
+              "testo": "Gestisco tornei del Pokémon TCG, dalle iscrizioni ai risultati, con attenzione a regole e correttezza."
+            },
+            "en": {
+              "titolo": "Tournaments",
+              "testo": "I run Pokémon TCG tournaments, from registration to results, with attention to rules and fair play."
+            }
           },
           {
-            "it": { "titolo": "Deck Check", "testo": "Controllo i mazzi prima e durante i tornei, per assicurare che siano regolari." },
-            "en": { "titolo": "Deck Check", "testo": "I check decks before and during tournaments to make sure they are legal." }
+            "it": {
+              "titolo": "Deck Check",
+              "testo": "Controllo i mazzi prima e durante i tornei, per assicurare che siano regolari."
+            },
+            "en": {
+              "titolo": "Deck Check",
+              "testo": "I check decks before and during tournaments to make sure they are legal."
+            }
           },
           {
-            "it": { "titolo": "Organizzazione", "testo": "Organizzo eventi e League, dalla preparazione al giorno del gioco, in modo che siano accoglienti per tutti." },
-            "en": { "titolo": "Organisation", "testo": "I organise events and Leagues, from preparation to game day, so that everyone feels welcome." }
+            "it": {
+              "titolo": "Organizzazione",
+              "testo": "Organizzo eventi e League, dalla preparazione al giorno del gioco, in modo che siano accoglienti per tutti."
+            },
+            "en": {
+              "titolo": "Organisation",
+              "testo": "I organise events and Leagues, from preparation to game day, so that everyone feels welcome."
+            }
           }
         ]
       }
     },
     {
       "icona": "assets/icons/language.svg",
-      "it": { "titolo": "Lingue", "testo": "Italiano · English" },
-      "en": { "titolo": "Languages", "testo": "Italian · English" }
+      "it": {
+        "titolo": "Lingue",
+        "testo": "Italiano · English"
+      },
+      "en": {
+        "titolo": "Languages",
+        "testo": "Italian · English"
+      }
     }
   ],
-
   "certificazioni": [
     {
       "nome": "Organizer",
       "data": "12/03/2024",
       "stato": "attiva",
-      "immagini": [],
-      "it": { "descrizione": "Organizzazione di eventi e tornei Pokémon TCG." },
-      "en": { "descrizione": "Running Pokémon TCG events and tournaments." }
+      "immagini": [
+        "assets/certifications/organizer.png"
+      ],
+      "it": {
+        "descrizione": "Organizzazione di eventi e tornei Pokémon TCG."
+      },
+      "en": {
+        "descrizione": "Running Pokémon TCG events and tournaments."
+      }
     },
     {
       "nome": "Deck Check",
       "data": "18/07/2024",
       "stato": "attiva",
-      "immagini": [],
-      "it": { "descrizione": "Controllo mazzi e regolamenti." },
-      "en": { "descrizione": "Deck checking and rules enforcement." }
+      "immagini": [
+        "assets/certifications/deck-check.png"
+      ],
+      "it": {
+        "descrizione": "Controllo mazzi e regolamenti."
+      },
+      "en": {
+        "descrizione": "Deck checking and rules enforcement."
+      }
     },
     {
       "nome": "League Assistant",
       "data": "22/11/2023",
       "stato": "attiva",
-      "immagini": [],
-      "it": { "descrizione": "Supporto alla Lega Pokémon." },
-      "en": { "descrizione": "Supporting the Pokémon League." }
+      "immagini": [
+        "assets/certifications/league-assistant.png"
+      ],
+      "it": {
+        "descrizione": "Supporto alla Lega Pokémon."
+      },
+      "en": {
+        "descrizione": "Supporting the Pokémon League."
+      }
     },
     {
       "nome": "Condotta Professori",
       "data": "03/02/2025",
       "stato": "attiva",
-      "immagini": [],
-      "it": { "descrizione": "Educazione e valori Pokémon." },
-      "en": { "descrizione": "Pokémon education and values." }
+      "immagini": [
+        "assets/certifications/condotta-professori.png"
+      ],
+      "it": {
+        "descrizione": "Educazione e valori Pokémon."
+      },
+      "en": {
+        "descrizione": "Pokémon education and values."
+      }
     },
     {
       "nome": "PROF 101",
       "data": "15/09/2023",
       "stato": "attiva",
-      "immagini": [],
-      "it": { "descrizione": "Formazione e aggiornamento." },
-      "en": { "descrizione": "Training and continuing education." }
+      "immagini": [
+        "assets/certifications/prof-101.png"
+      ],
+      "it": {
+        "descrizione": "Formazione e aggiornamento."
+      },
+      "en": {
+        "descrizione": "Training and continuing education."
+      }
     }
   ]
 }
