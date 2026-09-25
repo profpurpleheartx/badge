@@ -14,7 +14,8 @@ import {initCertTilt} from "./components/certTilt.js";
 
 let config=null,lang=getLingua();
 
-// Le foto delle certificazioni si trovano da sole dal nome:
+// Se l'app ha pubblicato il certificato vero si mostra quello; altrimenti
+// la foto si trova da sola dal nome:
 // "Deck Check" → assets/certifications/deck-check.png. Se il file non
 // c'è, compare il riquadro decorativo.
 function fotoDalNome(nome){
@@ -83,7 +84,7 @@ async function start(){
       nome:c.nome||"",
       data:c.data||"",
       stato:c.stato==="in-rinnovo"?"in-rinnovo":"attiva",
-      immagini:fotoDalNome(c.nome),
+      immagini:c.immagineUrl?[c.immagineUrl]:fotoDalNome(c.nome),
       it:{descrizione:c.descrizioneIt||""},
       en:{descrizione:c.descrizioneEn||""}
     }));

@@ -15,7 +15,8 @@
 
 const PROGETTO = "professor-hub-e0b16";
 const CHIAVE_API = "AIzaSyCJVEKIel5R4tn0LZHtTi_yI0M2p1h3r8s";
-const URL = `https://firestore.googleapis.com/v1/projects/${PROGETTO}/databases/(default)/documents/badge_pubblico/profilo?key=${CHIAVE_API}`;
+const BASE = `https://firestore.googleapis.com/v1/projects/${PROGETTO}/databases/(default)/documents/badge_pubblico`;
+const URL = `${BASE}/profilo?key=${CHIAVE_API}`;
 const CHIAVE_CACHE = "professorhub:badge:ultimo";
 const TIMEOUT_MS = 6000;
 
@@ -50,7 +51,28 @@ function leggiCache() {
 }
 
 function salvaCache(dati) {
-  try { localStorage.setItem(CHIAVE_CACHE, JSON.stringify(dati)); } catch { /* spazio pieno o bloccato: pazienza */ }
+  try {
+    localStorage.setItem(CHIAVE_CACHE, JSON.stringify(dati));
+  } catch {
+    // Spazio pieno (le immagini pesano): si tiene almeno il resto.
+    try {
+      const leggero = { ...dati, certificazioni: dati.certificazioni.map(({ immagineUrl, ...c }) => c) };
+      localStorage.setItem(CHIAVE_CACHE, JSON.stringify(leggero));
+    } catch { /* bloccato: pazienza */ }
+  }
+}
+
+// Ogni certificato pubblicato dall'app sta in un documento a parte
+// (badge_pubblico/foto-<id>), con l'immagine come data URL.
+async function caricaImmagine(id, signal) {
+  try {
+    const risposta = await fetch(`${BASE}/${encodeURIComponent(id)}?key=${CHIAVE_API}`, { signal, cache: "no-cache" });
+    if (!risposta.ok) return "";
+    const immagine = campi((await risposta.json()).fields || {}).immagine;
+    return typeof immagine === "string" && immagine.startsWith("data:image/") ? immagine : "";
+  } catch {
+    return "";
+  }
 }
 
 export async function caricaDatiPubblici() {
@@ -58,11 +80,14 @@ export async function caricaDatiPubblici() {
     const controller = new AbortController();
     const stop = setTimeout(() => controller.abort(), TIMEOUT_MS);
     const risposta = await fetch(URL, { signal: controller.signal, cache: "no-cache" });
-    clearTimeout(stop);
     if (!risposta.ok) throw new Error(`Firestore ha risposto ${risposta.status}`);
     const documento = await risposta.json();
     const dati = campi(documento.fields || {});
     if (!Array.isArray(dati.certificazioni)) throw new Error("Documento pubblico senza certificazioni");
+    await Promise.all(dati.certificazioni.map(async (c) => {
+      if (c && c.immagine) c.immagineUrl = await caricaImmagine(c.immagine, controller.signal);
+    }));
+    clearTimeout(stop);
     salvaCache(dati);
     return { dati, origine: "firestore" };
   } catch (errore) {
