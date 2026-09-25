@@ -23,11 +23,14 @@ function updateMedia(){
     const img=document.createElement("img");
     img.src=imgs[imgIdx];
     img.alt=`${c.nome||ui.certificazione} (${imgIdx+1}/${imgs.length})`;
-    img.onerror=()=>{area.innerHTML=`<div class="modal-paper modal-paper-error"><div><strong>⚠</strong><br><span>${escapeHtml(ui.immagineNonDisponibile)}</span></div></div>`};
+    img.onerror=()=>{area.innerHTML=cartaDecorativa(c)};
     area.append(img);
   } else {
-    area.innerHTML=`<div class="modal-paper"><div><strong>${escapeHtml(c.nome||"")}</strong><br><span>PLAY! POKÉMON<br>PROFESSOR CERTIFICATION</span></div></div>`;
+    area.innerHTML=cartaDecorativa(c);
   }
+}
+function cartaDecorativa(c){
+  return `<div class="modal-paper"><div><strong>${escapeHtml(c.nome||"")}</strong><br><span>PLAY! POKÉMON<br>PROFESSOR CERTIFICATION</span></div></div>`;
 }
 function update(){
   const c=items[idx]||{}; const t=c[lang]||c.it||{};

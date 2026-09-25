@@ -55,22 +55,4 @@ export function validateConfig(config = {}) {
       }
     });
   }
-
-  if (!Array.isArray(config.certificazioni) || config.certificazioni.length === 0) {
-    console.warn('[Professor Hub] Nessuna certificazione trovata in config.json: la sezione certificazioni verrà nascosta.');
-  } else {
-    config.certificazioni.forEach((cert, i) => {
-      const etichetta = cert.nome || `indice ${i}`;
-      if (!cert.nome) console.warn(`[Professor Hub] Certificazione all'indice ${i} senza "nome".`);
-      if (cert.stato && !["attiva", "in-rinnovo"].includes(cert.stato)) {
-        console.warn(`[Professor Hub] Certificazione "${etichetta}": stato "${cert.stato}" non riconosciuto, verrà mostrata come attiva. Valori validi: attiva, in-rinnovo.`);
-      }
-      if (!Array.isArray(cert.immagini) || cert.immagini.length === 0) {
-        console.info(`[Professor Hub] Certificazione "${etichetta}" senza immagini: verrà mostrato il riquadro decorativo.`);
-      }
-      LINGUE.forEach((lingua) => {
-        if (!cert[lingua]) console.warn(`[Professor Hub] Certificazione "${etichetta}": traduzione "${lingua}" mancante.`);
-      });
-    });
-  }
 }

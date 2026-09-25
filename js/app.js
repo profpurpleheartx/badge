@@ -12,14 +12,14 @@ import {initCertificationModal} from "./components/modal.js";
 import {initInfoModal} from "./components/infoModal.js";
 import {initCertTilt} from "./components/certTilt.js";
 
-let config=null,lang=getLingua(),certificazioniLocali=[];
+let config=null,lang=getLingua();
 
-// L'app non gestisce le foto delle certificazioni: quelle restano in
-// config.json. Quando le certificazioni arrivano dall'app, le foto
-// vengono riabbinate per nome, così pubblicare non le fa sparire.
-// Lo stesso vale per data e descrizioni lasciate vuote nell'app.
-function daConfig(nome){
-  return certificazioniLocali.find(c=>(c.nome||"").toLowerCase()===String(nome||"").toLowerCase())||{};
+// Le foto delle certificazioni si trovano da sole dal nome:
+// "Deck Check" → assets/certifications/deck-check.png. Se il file non
+// c'è, compare il riquadro decorativo.
+function fotoDalNome(nome){
+  const base=String(nome||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+  return base?[`assets/certifications/${base}.png`]:[];
 }
 
 function disegna(){
@@ -74,28 +74,21 @@ async function start(){
     config=await loadConfig();
     validateConfig(config);
     if(config.attiva===false){ mostraDisattivata(); return; }
-    certificazioniLocali=config.certificazioni||[];
 
-    // Certificazioni e rango arrivano dall'app Professor Hub, se pubblicati.
-    // Tutto il resto (nome, bio, info-card, traduzioni) resta di config.json.
+    // Certificazioni e rango arrivano solo dall'app Professor Hub (o
+    // dall'ultima copia ricevuta su questo dispositivo). Tutto il resto
+    // (nome, bio, info-card, traduzioni) resta di config.json.
     const {dati,origine}=await caricaDatiPubblici();
-    if(dati){
-      config.certificazioni=(dati.certificazioni||[]).map(c=>{
-        const locale=daConfig(c.nome);
-        return {
-          nome:c.nome||"",
-          data:c.data||locale.data||"",
-          stato:c.stato==="in-rinnovo"?"in-rinnovo":"attiva",
-          immagini:locale.immagini||[],
-          it:{...(locale.it||{}),descrizione:c.descrizioneIt||(locale.it||{}).descrizione||""},
-          en:{...(locale.en||{}),descrizione:c.descrizioneEn||(locale.en||{}).descrizione||""}
-        };
-      });
-      if(dati.rango) config.profilo={...(config.profilo||{}),rango:dati.rango};
-      console.info(`[Professor Hub] Certificazioni dall'app (${origine}): ${config.certificazioni.length}.`);
-    } else {
-      console.info("[Professor Hub] Nessun dato pubblicato dall'app: uso le certificazioni di config.json.");
-    }
+    config.certificazioni=((dati&&dati.certificazioni)||[]).map(c=>({
+      nome:c.nome||"",
+      data:c.data||"",
+      stato:c.stato==="in-rinnovo"?"in-rinnovo":"attiva",
+      immagini:fotoDalNome(c.nome),
+      it:{descrizione:c.descrizioneIt||""},
+      en:{descrizione:c.descrizioneEn||""}
+    }));
+    if(dati&&dati.rango) config.profilo={...(config.profilo||{}),rango:dati.rango};
+    console.info(`[Professor Hub] Certificazioni dall'app (${origine}): ${config.certificazioni.length}.`);
 
     $("#page").hidden=false;
     disegna();
