@@ -17,9 +17,9 @@ let config=null,lang=getLingua(),certificazioniLocali=[];
 // L'app non gestisce le foto delle certificazioni: quelle restano in
 // config.json. Quando le certificazioni arrivano dall'app, le foto
 // vengono riabbinate per nome, così pubblicare non le fa sparire.
-function immaginiDaConfig(nome){
-  const trovata=certificazioniLocali.find(c=>(c.nome||"").toLowerCase()===String(nome||"").toLowerCase());
-  return (trovata&&trovata.immagini)||[];
+// Lo stesso vale per data e descrizioni lasciate vuote nell'app.
+function daConfig(nome){
+  return certificazioniLocali.find(c=>(c.nome||"").toLowerCase()===String(nome||"").toLowerCase())||{};
 }
 
 function disegna(){
@@ -80,14 +80,17 @@ async function start(){
     // Tutto il resto (nome, bio, info-card, traduzioni) resta di config.json.
     const {dati,origine}=await caricaDatiPubblici();
     if(dati){
-      config.certificazioni=(dati.certificazioni||[]).map(c=>({
-        nome:c.nome||"",
-        data:c.data||"",
-        stato:c.stato==="in-rinnovo"?"in-rinnovo":"attiva",
-        immagini:immaginiDaConfig(c.nome),
-        it:{descrizione:c.descrizioneIt||""},
-        en:{descrizione:c.descrizioneEn||""}
-      }));
+      config.certificazioni=(dati.certificazioni||[]).map(c=>{
+        const locale=daConfig(c.nome);
+        return {
+          nome:c.nome||"",
+          data:c.data||locale.data||"",
+          stato:c.stato==="in-rinnovo"?"in-rinnovo":"attiva",
+          immagini:locale.immagini||[],
+          it:{...(locale.it||{}),descrizione:c.descrizioneIt||(locale.it||{}).descrizione||""},
+          en:{...(locale.en||{}),descrizione:c.descrizioneEn||(locale.en||{}).descrizione||""}
+        };
+      });
       if(dati.rango) config.profilo={...(config.profilo||{}),rango:dati.rango};
       console.info(`[Professor Hub] Certificazioni dall'app (${origine}): ${config.certificazioni.length}.`);
     } else {
